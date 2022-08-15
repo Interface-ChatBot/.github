@@ -73,9 +73,9 @@ python app.py
 [1]:https://wxmin.tistory.com/121
 
 ## 참고자료
-* [Flask REST API 구현][1]
+* [Flask REST API 구현][2]
 
-[1]:https://justkode.kr/python/flask-restapi-1
+[2]:https://justkode.kr/python/flask-restapi-1
 
 ***
 ## 회의내용
