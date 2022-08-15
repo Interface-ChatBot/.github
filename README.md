@@ -52,8 +52,31 @@
     - 기능구현 : 박서진
 13. __인터페이스 동아리 방 와이파이 비밀번호 안내__
     - 기능구현 : 박상욱
+    
 ## Using
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) 
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Flask](https://img.shields.io/badge/flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white)
+
+## 프로젝트 설치 방법
+
+명령프롬프트에서 아래의 코드 실행
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+pip install flask
+pip install flask-restx
+python app.py
+```
+* [python 명령어가 작동하지 않는 경우 환경 변수 설정][1]
+
+[1]:https://wxmin.tistory.com/121
+
+## 참고자료
+* [Flask REST API 구현][1]
+
+[1]:https://justkode.kr/python/flask-restapi-1
+
 ***
 ## 회의내용
 ### __1차 회의__ _2022_07_30_
