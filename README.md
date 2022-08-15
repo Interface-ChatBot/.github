@@ -65,7 +65,7 @@
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
 pip install flask
-pip install flask-restx
+pip install flask-cors
 python app.py
 ```
 * [python 명령어가 작동하지 않는 경우 환경 변수 설정][1]
@@ -73,9 +73,7 @@ python app.py
 [1]:https://wxmin.tistory.com/121
 
 ## 참고자료
-* [Flask REST API 구현][2]
 
-[2]:https://justkode.kr/python/flask-restapi-1
 
 ***
 ## 회의내용
