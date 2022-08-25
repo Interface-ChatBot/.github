@@ -32,7 +32,7 @@
     - 기능구현 : 박서진
 3. __인터페이스 집부 구성원 안내 (번호는 검토 필요, 메일은 가능)__
     - 기능구현 : 주시환
-4. __인터페이스 회비 안내__
+4. __인터페이스 회비 안내__ (구현완료)
     - 기능구현 : 박상욱
 5. __인터페이스 동아리 방 위치 안내__
     - 기능구현 : 김가현
@@ -52,8 +52,29 @@
     - 기능구현 : 박서진
 13. __인터페이스 동아리 방 와이파이 비밀번호 안내__
     - 기능구현 : 박상욱
+    
 ## Using
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) 
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Flask](https://img.shields.io/badge/flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white)
+
+## 프로젝트 설치 방법
+
+명령프롬프트에서 아래의 코드 실행
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+pip install flask
+pip install flask-cors
+python app.py
+```
+* [python 명령어가 작동하지 않는 경우 환경 변수 설정][1]
+
+[1]:https://wxmin.tistory.com/121
+
+## 참고자료
+
+
 ***
 ## 회의내용
 ### __1차 회의__ _2022_07_30_
@@ -65,3 +86,10 @@
 - 깃허브 branch는 실제 개발 들어갈 때 사용할 __예정__
 - Notion은 각자 역할 공부가 끝난 후 실제 개발이 들어가기 전에 검토할 __예정__
 - 8월에는  각자 공부한 거 깃허브에 업로드 및 2주에 한 번씩 토요일 11시에 비대면(디스코드)으로 질문시간 및 회의 __예정__
+
+### __2차 회의__ _2022_08_13_
+- __다음 회의까지(2주 뒤)__ 기능 구현팀은 url을 이용하여 각자 맡은 시나리오를 완전하게 구현하는 것이 아닌 대략적으로 정보를 보여준다는 식으로 만들기
+- __다음 회의까지(2주 뒤)__ DB는 Flask 와 MySQL 연동하기
+- __다음 회의까지(2주 뒤)__ 서버는 Flask 와 카카오톡 챗봇이랑 연동을 하되 서버를 처음 다루고 공부하는 상태이기 때문에 무리 하지 않고 할 수 있는만큼 도전해보기
+- 검토가 필요하였던 기능들은 우선 구현해보고 문제시 폐기 __예정__
+- github desktop 사용법을 숙지하고 github에 각자 폴더를 만들고 2주간 공부한 파일 업로드 __완료__

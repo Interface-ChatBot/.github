@@ -1,9 +1,21 @@
 from flask import Flask
-app = Flask(__name__)
+from flask_cors import CORS
 
+app = Flask(__name__)
+CORS(app)
+
+#url
 @app.route('/')
-def hello():
+def index():
     return 'Hello Flask'
+
+# membership fee
+@app.route('/fee')
+def fee():
+    return {
+        "freshman": "15000",
+        "not freshman": "10000"
+    }
 
 @app.route('/login')
 def login():
