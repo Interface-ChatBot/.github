@@ -13,10 +13,6 @@ def hello():
 @app.route('/animal', methods=['POST'])
 def animal():
     req = request.get_json()
-    
-    #터미널에서 전달받은 json 내용 출력/확인(삭제 예정)
-    print(req)
-    
     animal_type = req["action"]["detailParams"]["Animal_type"]["value"]	# json파일 읽기
     answer = animal_type
     
@@ -38,4 +34,4 @@ def animal():
     return jsonify(res)
 
 if __name__ == "__main__":
-    app.run(host='localhost', port=8000, threaded=True)
+    app.run(host='0.0.0.0', port=5000, threaded=True)
