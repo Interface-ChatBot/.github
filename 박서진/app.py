@@ -27,6 +27,9 @@ def introduction():
         "Founding Date": "1989.08"
     }
 
+# Interface requirements
+@app.route('/require')
+    
 @app.route('/login')
 def login():
     return 'Login'
