@@ -1,67 +1,107 @@
-from flask import Flask
-from flask_cors import CORS
+from flask import Flask,request,jsonify
 
 app = Flask(__name__)
-CORS(app)
 
-#url
-@app.route('/',methods=['GET')
-def index():
-    return 'Hello Flask'
 
-#url
-@app.route('/',methods=['POST')
-def index():
-    content = request.get_json()
-    content = content['userRequest']['utterance']
+@app.route("/")
+def start():
+    return "Hello goorm!"
 
-    content = content.replace("\n","")
-    print(content)
+@app.route("/fee",methods=['POST'])
+def fee():
+    # 신입생인지 재학생인지 request로 구분
+    req = request.get_json()
+    
+    member_type = req["action"]["detailParams"]["Member_type"]["value"]	
+    
+    fee = 0
+    
+    if member_type == "재학생":
+        fee = 20000
+    elif member_type == "신입생":
+        fee = 20000
+    else :
+        fee = 0
+    
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "[동아리 회비] 신입생 : 20000원, 재학생 : 20000원",
+                        "request": req
+                    }
+                }
+            ]
+        }
+    }
+    
+    return jsonify(res)
 
-    if content = u"오늘의 메뉴"
-        dataSend = {
-            "version" : "2.0",
-            "template" : {
-                "outputs" : [
+@app.route("/hello",methods=['POST'])
+def hello():
+    # 신입생인지 재학생인지 request로 구분
+    req = request.get_json()
+    
+    
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "Hello KakaoTalk"
+                    }
+                }
+            ]
+        }
+    }
+    
+    return jsonify(res)
+
+#인터페이스 소개
+@app.route("/intro",methods=['POST'])
+def intro():
+    
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "안녕하세요 세종대학교 중앙동아리 인터페이스입니다."
+                    }
+                }
+            ]
+        }
+    }
+    
+    return jsonify(res)
+
+# 인터페이스 모집요강
+@chatbot.route("/guide",methods=['POST'])
+def guide():
+    
+    body = request.get_json()
+    userReq = body['userRequest']['utterance']    
+    res = {
+            "version": "2.0",
+            "template": {
+                "outputs": [
                     {
-                        "simpleText" : {
-                            "text" : "테스트입니다."
+                        "simpleText": {
+                            "link": "https://sejong-interface.github.io/"
                         }
                     }
                 ]
             }
-        }
-    else:
-        
-    return 'Hello Flask'
-
-# membership fee
-@app.route('/fee')
-def fee():
-    if method == "POST":
-        # payloads = request.get_json()
-        # pprint.pprint(payloads)
-        _ret = {"version": "2.0",
-                "template": {"outputs": [{"simpleText": {"text": "hello"}}]
-                                }
-                }
-
-    return jsonify(_ret), 200
-
+        }   
+    if(userReq == "테스트"):
+        res['outputs']['simpletext']['link'] = "text"
     
-    # return { "freshman": "15000","nofreshman": "10000"}
+    return res
+    
 
-# Club Wi-Fi password
-@app.route('/wifi')
-def wifi():
-    return {
-        "interface518": "518interface",
-        "interface518 5G": "518interface"
-    }
-
-@app.route('/login')
-def login():
-    return 'Login'
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    chatbot.run(host='0.0.0.0', port=5000, threaded=True)
