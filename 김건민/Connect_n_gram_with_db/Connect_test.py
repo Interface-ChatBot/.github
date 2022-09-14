@@ -25,4 +25,4 @@ user_input_ngram = n_gram.ngram(n_gram.n_list(user_input), 2)
 for i in data:
     command_ngram = n_gram.ngram(n_gram.n_list(i['command']), 2)
     similarity = n_gram.similarity(user_input_ngram, command_ngram)
-    print(similarity)
+    print(f'Similarity with [{i["command"]}] : {similarity}')
