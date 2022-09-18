@@ -14,8 +14,6 @@
     - 기능 구현
 * __박서진__
     - 기능 구현
-* ~~__김가현__~~
-    - ~~기능 구현~~
 * __박세현__
     - 서버연동
 * __이형민__
@@ -50,7 +48,7 @@
     - 기능구현 : 박상욱
 12. __인터페이스 동아리에 건의사항 받는 서비스 (비품, 음식 등 필요한 물품)__
     - 기능구현 : 박서진
-13. __인터페이스 동아리 방 와이파이 비밀번호 안내__
+13. __인터페이스 동아리 방 와이파이 비밀번호 안내__ (구현완료)
     - 기능구현 : 박상욱
     
 ## Using
@@ -68,13 +66,12 @@ pip install flask
 pip install flask-cors
 python app.py
 ```
-* [python 명령어가 작동하지 않는 경우 환경 변수 설정][1]
-
-[1]:https://wxmin.tistory.com/121
+* [python 명령어가 작동하지 않는 경우 환경 변수 설정](https://wxmin.tistory.com/121)
 
 ## 참고자료
-
-
+* [구름 IDE 이용하여 카카오톡 스킬 서버 만들기](https://novice-engineers.tistory.com/m/23)
+* [카카오톡 바로가기 버튼 이용](https://luckygg.tistory.com/326)
+* [카카오톡 챗봇 공식 도움말](https://i.kakao.com/docs/tutorial-chatbot-key-features#%EC%9B%B0%EC%BB%B4-%EB%B8%94%EB%A1%9Dwelcome-block-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
 ***
 ## 회의내용
 ### __1차 회의__ _2022_07_30_
