@@ -9,45 +9,40 @@ def hello():
 # 동아리 회비 안내
 @application.route("/fee",methods=['POST'])
 def fee():
+    # 신입생인지 재학생인지 request로 구분
     
-    req = request.get_json()    # 신입생인지 재학생인지 request로 구분
+    req = request.get_json()
 
-    userRes = req["userRequest"]["utterance"]   #사용자 발화 저장 -> 사용자가 챗봇 채팅방에 친 명령어 -> 이걸로 유사도 검사해서 
+    userRes = req["userRequest"]["utterance"]	 				#사용자 발화 저장
     member_type = req["action"]["clientExtra"]["member_type"]	#바로가기 parameter 저장
+        
+    fee = 0
     
-    # 그냥 parameter도 저장할 수 있었는데 기억이 안나요
-
-    fee = 0     # 회비 저장용 변수
-    
-    # request에서 파싱한 정보를 바탕으로 학생 구분해서 fee 에 알맞은 회비 저장
     if member_type == "신입생":
         fee = 20000
     elif member_type == "재학생":
         fee = 20000
     
-    # 출력 양식 -> simpleText, simpleImage 등 여러가지 양식 있음
     res = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
                     "simpleText": {
-                        # 동아리 회비 안내 -> fee 는 정수형 변수라서 str(fee)로 형변환
-                        "text": "[동아리 회비]\n"+member_type+" : " + str(fee) + "원"    
+                        "text": "[동아리 회비]\n"+member_type+" : " + str(fee) + "원",
                     }
                 }
             ]
         }
     }
     
-    return jsonify(res) # json 형식으로 리턴
+    return jsonify(res)
 
 # Wi-Fi 비밀번호 안내
 @application.route("/wifi",methods=['POST'])
-def Wifi():
+def wifi():
     req = request.get_json()
     
-    # 결과 출력
     res = {
         "version": "2.0",
         "template": {
@@ -62,6 +57,91 @@ def Wifi():
     }
     
     return jsonify(res)
+
+# 동아리 재실 / 퇴실 여부 체크
+@application.route("/isroom",methods=['POST'])
+def isroom():
+    
+    req = request.get_json()
+    
+    userRes = req["userRequest"]["utterance"]	 #사용자 발화 저장
+    
+    pnum = 0	#DB에서 가져오기
+    text = ""
+    
+    if userRes == "재실":
+        # DB 재실인원 증가
+        pnum += 1
+        
+    elif userRes == "퇴실":
+        # DB 재실인원 감소
+        pnum += -1
+            
+    text = "현재 재실 인원은 " + str(pnum) + "명 입니다."
+    
+    # 6시에 재실인원 0으로 초기화
+    
+    
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": text
+                    }
+                }
+            ]
+        }
+    }
+        
+    return jsonify(res)
+
+
+
+# 동아리 재실 인원 안내
+@application.route("/peoplenum",methods=['POST'])
+def peoplenum():
+    
+    pnum = 1	# DB에서 값 가져오기
+    
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "현재 동아리방 재실 인원 : " + str(pnum)
+                    }
+                }
+            ]
+        }
+    }
+        
+    return jsonify(res)
+
+
+
+# 동아리방 위치 안내
+@application.route("/clubroom",methods=['POST'])
+def clubroom():
+    
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "동아리방 위치 : 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf"
+                    }
+                }
+            ]
+        }
+    }
+    
+    return jsonify(res)
+
+
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', port=5000, threaded=True)
