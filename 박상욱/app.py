@@ -1,4 +1,3 @@
-# encoding: utf-8
 # -*- coding: euc-kr -*-
 
 from flask import Flask,request,jsonify
@@ -21,9 +20,9 @@ def fee():
         
     fee = 0
     
-    if member_type == "신입생".encode('utf-8'):
+    if member_type == "신입생":
         fee = 20000
-    elif member_type == "재학생".encode('utf-8'):
+    elif member_type == "재학생":
         fee = 20000
     
     res = {
@@ -32,7 +31,7 @@ def fee():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "[동아리 회비]\n".encode('utf-8')+member_type+" : " + str(fee) + "원".encode('utf-8'),
+                        "text": "[동아리 회비]\n" + member_type + " : " + str(fee) + "원",
                     }
                 }
             ]
@@ -52,7 +51,7 @@ def wifi():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "Wi-Fi name : 어서와코딩은처음이지 (5G)\nPassword : 518interface".encode('utf-8')
+                        "text": "Wi-Fi name : 어서와코딩은처음이지 (5G)\nPassword : 518interface"
                     }
                 }
             ]
@@ -72,15 +71,15 @@ def isroom():
     pnum = 0	#DB에서 가져오기
     text = ""
     
-    if userRes == "재실".encode('utf-8'):
+    if userRes == "재실":
         # DB 재실인원 증가
         pnum += 1
         
-    elif userRes == "퇴실".encode('utf-8'):
+    elif userRes == "퇴실":
         # DB 재실인원 감소
         pnum += -1
             
-    text = "현재 재실 인원은 ".encode('utf-8') + str(pnum) + "명 입니다.".encode('utf-8')
+    text = "현재 재실 인원은 " + str(pnum) + "명 입니다."
     
     # 6시에 재실인원 0으로 초기화
     
@@ -114,7 +113,7 @@ def peoplenum():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "현재 동아리방 재실 인원 : ".encode('utf-8') + str(pnum)
+                        "text": "현재 동아리방 재실 인원 : " + str(pnum)
                     }
                 }
             ]
@@ -135,7 +134,7 @@ def clubroom():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "동아리방 위치 : 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf".encode('utf-8')
+                        "text": "동아리방 위치 : 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf"
                     }
                 }
             ]
