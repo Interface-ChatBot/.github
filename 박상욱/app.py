@@ -99,8 +99,6 @@ def isroom():
         
     return jsonify(res)
 
-
-
 # 동아리 재실 인원 안내
 @application.route("/peoplenum",methods=['POST'])
 def peoplenum():
@@ -145,4 +143,5 @@ def clubroom():
 
 
 if __name__ == "__main__":
-    application.run(host='10.128.0.2', port=5000, threaded=True)
+    # application.run(host='10.128.0.2', port=5000, threaded=True)
+    application.run(host='0.0.0.0', port=5000, threaded=True)
