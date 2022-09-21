@@ -1,3 +1,5 @@
+# -*- coding: euc-kr -*-
+
 from flask import Flask,request,jsonify
 
 application = Flask(__name__)
