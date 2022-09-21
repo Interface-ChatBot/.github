@@ -146,4 +146,4 @@ def clubroom():
 
 
 if __name__ == "__main__":
-    application.run(host='10.128.0.2', port=5000, threaded=True)
+    application.run(host='0.0.0.0', port=5000, threaded=True)
