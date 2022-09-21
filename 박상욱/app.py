@@ -1,3 +1,4 @@
+# encoding: utf-8
 # -*- coding: euc-kr -*-
 
 from flask import Flask,request,jsonify
