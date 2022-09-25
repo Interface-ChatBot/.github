@@ -36,10 +36,8 @@ def fee():
 # Wi-Fi 비밀번호 안내
 @application.route("/wifi",methods=['POST'])
 def wifi():
-    print("succeed")
+
     req = request.get_json()
-    
-    print(req)
     
     text = "Wi-Fi name : 어서와코딩은처음이지 (5G)\nPassword : 518interface"
     
