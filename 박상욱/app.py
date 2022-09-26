@@ -8,21 +8,21 @@ application = Flask(__name__)
 def hello():
     return "Hello goorm!"
 
-# µ¿¾Æ¸® È¸ºñ ¾È³»
+# ë™ì•„ë¦¬ íšŒë¹„ ì•ˆë‚´
 @application.route("/fee",methods=['POST'])
 def fee():
-    # ½ÅÀÔ»ıÀÎÁö ÀçÇĞ»ıÀÎÁö request·Î ±¸ºĞ
+    # ì‹ ì…ìƒì¸ì§€ ì¬í•™ìƒì¸ì§€ requestë¡œ êµ¬ë¶„
     
     req = request.get_json()
 
-    userRes = req["userRequest"]["utterance"]	 				#»ç¿ëÀÚ ¹ßÈ­ ÀúÀå
-    member_type = req["action"]["clientExtra"]["member_type"]	#¹Ù·Î°¡±â parameter ÀúÀå
+    userRes = req["userRequest"]["utterance"]	 				#ì‚¬ìš©ì ë°œí™” ì €ì¥
+    member_type = req["action"]["clientExtra"]["member_type"]	#ë°”ë¡œê°€ê¸° parameter ì €ì¥
         
     fee = 0
     
-    if member_type == "½ÅÀÔ»ı":
+    if member_type == "ì‹ ì…ìƒ":
         fee = 20000
-    elif member_type == "ÀçÇĞ»ı":
+    elif member_type == "ì¬í•™ìƒ":
         fee = 20000
     
     res = {
@@ -31,7 +31,7 @@ def fee():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "[µ¿¾Æ¸® È¸ºñ]\n" + member_type + " : " + str(fee) + "¿ø",
+                        "text": "[ë™ì•„ë¦¬ íšŒë¹„]\n" + member_type + " : " + str(fee) + "ì›",
                     }
                 }
             ]
@@ -40,7 +40,7 @@ def fee():
     
     return jsonify(res)
 
-# Wi-Fi ºñ¹Ğ¹øÈ£ ¾È³»
+# Wi-Fi ë¹„ë°€ë²ˆí˜¸ ì•ˆë‚´
 @application.route("/wifi",methods=['POST'])
 def wifi():
     req = request.get_json()
@@ -51,7 +51,7 @@ def wifi():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "Wi-Fi name : ¾î¼­¿ÍÄÚµùÀºÃ³À½ÀÌÁö (5G)\nPassword : 518interface"
+                        "text": "Wi-Fi name : ì–´ì„œì™€ì½”ë”©ì€ì²˜ìŒì´ì§€ (5G)\nPassword : 518interface"
                     }
                 }
             ]
@@ -60,28 +60,28 @@ def wifi():
     
     return jsonify(res)
 
-# µ¿¾Æ¸® Àç½Ç / Åğ½Ç ¿©ºÎ Ã¼Å©
+# ë™ì•„ë¦¬ ì¬ì‹¤ / í‡´ì‹¤ ì—¬ë¶€ ì²´í¬
 @application.route("/isroom",methods=['POST'])
 def isroom():
     
     req = request.get_json()
     
-    userRes = req["userRequest"]["utterance"]	 #»ç¿ëÀÚ ¹ßÈ­ ÀúÀå
+    userRes = req["userRequest"]["utterance"]	 #ì‚¬ìš©ì ë°œí™” ì €ì¥
     
-    pnum = 0	#DB¿¡¼­ °¡Á®¿À±â
+    pnum = 0	#DBì—ì„œ ê°€ì ¸ì˜¤ê¸°
     text = ""
     
-    if userRes == "Àç½Ç":
-        # DB Àç½ÇÀÎ¿ø Áõ°¡
+    if userRes == "ì¬ì‹¤":
+        # DB ì¬ì‹¤ì¸ì› ì¦ê°€
         pnum += 1
         
-    elif userRes == "Åğ½Ç":
-        # DB Àç½ÇÀÎ¿ø °¨¼Ò
+    elif userRes == "í‡´ì‹¤":
+        # DB ì¬ì‹¤ì¸ì› ê°ì†Œ
         pnum += -1
             
-    text = "ÇöÀç Àç½Ç ÀÎ¿øÀº " + str(pnum) + "¸í ÀÔ´Ï´Ù."
+    text = "í˜„ì¬ ì¬ì‹¤ ì¸ì›ì€ " + str(pnum) + "ëª… ì…ë‹ˆë‹¤."
     
-    # 6½Ã¿¡ Àç½ÇÀÎ¿ø 0À¸·Î ÃÊ±âÈ­
+    # 6ì‹œì— ì¬ì‹¤ì¸ì› 0ìœ¼ë¡œ ì´ˆê¸°í™”
     
     
     res = {
@@ -99,11 +99,11 @@ def isroom():
         
     return jsonify(res)
 
-# µ¿¾Æ¸® Àç½Ç ÀÎ¿ø ¾È³»
+# ë™ì•„ë¦¬ ì¬ì‹¤ ì¸ì› ì•ˆë‚´
 @application.route("/peoplenum",methods=['POST'])
 def peoplenum():
     
-    pnum = 1	# DB¿¡¼­ °ª °¡Á®¿À±â
+    pnum = 1	# DBì—ì„œ ê°’ ê°€ì ¸ì˜¤ê¸°
     
     res = {
         "version": "2.0",
@@ -111,7 +111,7 @@ def peoplenum():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "ÇöÀç µ¿¾Æ¸®¹æ Àç½Ç ÀÎ¿ø : " + str(pnum)
+                        "text": "í˜„ì¬ ë™ì•„ë¦¬ë°© ì¬ì‹¤ ì¸ì› : " + str(pnum)
                     }
                 }
             ]
@@ -122,7 +122,7 @@ def peoplenum():
 
 
 
-# µ¿¾Æ¸®¹æ À§Ä¡ ¾È³»
+# ë™ì•„ë¦¬ë°© ìœ„ì¹˜ ì•ˆë‚´
 @application.route("/clubroom",methods=['POST'])
 def clubroom():
     
@@ -132,7 +132,7 @@ def clubroom():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "µ¿¾Æ¸®¹æ À§Ä¡ : ¼¼Á¾´ëÇĞ±³ ÇĞ»ıÈ¸°ü 518È£\nhttps://naver.me/F6mxi8mf"
+                        "text": "ë™ì•„ë¦¬ë°© ìœ„ì¹˜ : ì„¸ì¢…ëŒ€í•™êµ í•™ìƒíšŒê´€ 518í˜¸\nhttps://naver.me/F6mxi8mf"
                     }
                 }
             ]
