@@ -1,5 +1,3 @@
-# -*- coding: euc-kr -*-
-
 from flask import Flask,request,jsonify
 
 application = Flask(__name__)
@@ -8,15 +6,13 @@ application = Flask(__name__)
 def hello():
     return "Hello goorm!"
 
-# 동아리 회비 안내
 @application.route("/fee",methods=['POST'])
 def fee():
-    # 신입생인지 재학생인지 request로 구분
     
     req = request.get_json()
 
-    userRes = req["userRequest"]["utterance"]	 				#사용자 발화 저장
-    member_type = req["action"]["clientExtra"]["member_type"]	#바로가기 parameter 저장
+    userRes = req["userRequest"]["utterance"]	 				#?ъ슜??諛쒗솕 ???
+    member_type = req["action"]["clientExtra"]["member_type"]	#諛붾줈媛湲?parameter ???
         
     fee = 0
     
@@ -31,7 +27,7 @@ def fee():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "[동아리 회비]\n" + member_type + " : " + str(fee) + "원",
+                        "text": "동아리 회비\n" + member_type + " : " + str(fee) + "원",
                     }
                 }
             ]
@@ -40,7 +36,6 @@ def fee():
     
     return jsonify(res)
 
-# Wi-Fi 비밀번호 안내
 @application.route("/wifi",methods=['POST'])
 def wifi():
     req = request.get_json()
@@ -51,7 +46,7 @@ def wifi():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "Wi-Fi name : 어서와코딩은처음이지 (5G)\nPassword : 518interface"
+                        "text": "Wi-Fi name : 어서와코딩은처음이지? (5G)\nPassword : 518interface"
                     }
                 }
             ]
@@ -60,28 +55,28 @@ def wifi():
     
     return jsonify(res)
 
-# 동아리 재실 / 퇴실 여부 체크
+''''
 @application.route("/isroom",methods=['POST'])
 def isroom():
     
     req = request.get_json()
     
-    userRes = req["userRequest"]["utterance"]	 #사용자 발화 저장
+    userRes = req["userRequest"]["utterance"]	 
     
-    pnum = 0	#DB에서 가져오기
+    pnum = 0	
     text = ""
     
-    if userRes == "재실":
-        # DB 재실인원 증가
+    if userRes == "?ъ떎":
+        # DB ?ъ떎?몄썝 利앷?
         pnum += 1
         
-    elif userRes == "퇴실":
-        # DB 재실인원 감소
+    elif userRes == "?댁떎":
+        # DB ?ъ떎?몄썝 媛먯냼
         pnum += -1
             
-    text = "현재 재실 인원은 " + str(pnum) + "명 입니다."
+    text = "?꾩옱 ?ъ떎 ?몄썝? " + str(pnum) + "紐??낅땲??"
     
-    # 6시에 재실인원 0으로 초기화
+    # 6?쒖뿉 ?ъ떎?몄썝 0?쇰줈 珥덇린??
     
     
     res = {
@@ -98,12 +93,13 @@ def isroom():
     }
         
     return jsonify(res)
+ '''
 
-# 동아리 재실 인원 안내
+'''
 @application.route("/peoplenum",methods=['POST'])
 def peoplenum():
     
-    pnum = 1	# DB에서 값 가져오기
+    pnum = 1	# DB?먯꽌 媛?媛?몄삤湲?
     
     res = {
         "version": "2.0",
@@ -111,7 +107,7 @@ def peoplenum():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "현재 동아리방 재실 인원 : " + str(pnum)
+                        "text": "?꾩옱 ?숈븘由щ갑 ?ъ떎 ?몄썝 : " + str(pnum)
                     }
                 }
             ]
@@ -119,10 +115,9 @@ def peoplenum():
     }
         
     return jsonify(res)
+'''
 
 
-
-# 동아리방 위치 안내
 @application.route("/clubroom",methods=['POST'])
 def clubroom():
     
@@ -132,7 +127,7 @@ def clubroom():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "동아리방 위치 : 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf"
+                        "text": "동아리방 위치 : 세종대하굑 학생회관 518호\nhttps://naver.me/F6mxi8mf"
                     }
                 }
             ]
