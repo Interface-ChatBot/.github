@@ -1,4 +1,3 @@
-#-*coding:utf-8-*-
 from flask import Flask, request, jsonify
 
 application = Flask(__name__)
@@ -21,7 +20,7 @@ def introduction():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "¼¼Á¾´ëÇĞ±³ Áß¾Óµ¿¾Æ¸® ÀÎÅÍÆäÀÌ½º ¿¬Çõ"
+                        "text": "ì„¸ì¢…ëŒ€í•™êµ ì¤‘ì•™ë™ì•„ë¦¬ ì¸í„°í˜ì´ìŠ¤ ì—°í˜"
                     }
                 }
             ]
@@ -42,7 +41,7 @@ def schedule():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "ÇÁ·ÎÁ§Æ® Àü½ÃÈ¸"
+                        "text": "í”„ë¡œì íŠ¸ ì „ì‹œíšŒ"
                     }
                 }
             ]
@@ -59,17 +58,17 @@ def people():
     
     people = 0
     
-    if generation_type == "30±â":
+    if generation_type == "30ê¸°":
         people = 10
-    elif generation_type == "31±â":
+    elif generation_type == "31ê¸°":
         people = 20
-    elif generation_type == "32±â":
+    elif generation_type == "32ê¸°":
         people = 34
-    elif generation_type == "33±â":
+    elif generation_type == "33ê¸°":
         people = 45
-    elif generation_type == "34±â":
+    elif generation_type == "34ê¸°":
         people = 50
-    elif generation_type == "35±â":
+    elif generation_type == "35ê¸°":
         people = 70
     
     res = {
@@ -78,7 +77,7 @@ def people():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "[±â¼öº° ÀÎ¿ø ¼ö]\n" + generation_type + " : " +str(people) + "¸í"
+                        "text": "[ê¸°ìˆ˜ë³„ ì¸ì› ìˆ˜]\n" + generation_type + " : " +str(people) + "ëª…"
                     }
                 }
             ]
