@@ -72,6 +72,7 @@ python app.py
 * [구름 IDE 이용하여 카카오톡 스킬 서버 만들기](https://novice-engineers.tistory.com/m/23)
 * [카카오톡 바로가기 버튼 이용](https://luckygg.tistory.com/326)
 * [카카오톡 챗봇 공식 도움말](https://i.kakao.com/docs/tutorial-chatbot-key-features#%EC%9B%B0%EC%BB%B4-%EB%B8%94%EB%A1%9Dwelcome-block-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
+* [Mac 터미널 이용하여 SSH 접속 방법](https://earth-95.tistory.com/54)
 ***
 ## 회의내용
 ### __1차 회의__ _2022_07_30_
