@@ -11,8 +11,8 @@ def fee():
     
     req = request.get_json()
 
-    userRes = req["userRequest"]["utterance"]	 				#??????꾩룇裕??????
-    member_type = req["action"]["clientExtra"]["member_type"]	#?꾩룆?餓λ뛼泥???parameter ????
+    userRes = req["userRequest"]["utterance"]	 				
+    member_type = req["action"]["clientExtra"]["member_type"]	
         
     fee = 0
     
@@ -67,17 +67,14 @@ def isroom():
     text = ""
     
     if userRes == "????:
-        # DB ????筌뤾쑴??嶺뚯빘鍮?
+        # DB 
         pnum += 1
         
-    elif userRes == "??怨룸펲":
-        # DB ????筌뤾쑴???띠룆흮??
+    elif userRes == "":
+        # DB 
         pnum += -1
             
-    text = "?熬곣뫗???????筌뤾쑴??? " + str(pnum) + "嶺????낅퉵??"
-    
-    # 6??戮?뱺 ????筌뤾쑴??0??怨쀬Ŧ ?貫?껆뵳??
-    
+    text = ""
     
     res = {
         "version": "2.0",
@@ -99,7 +96,7 @@ def isroom():
 @application.route("/peoplenum",methods=['POST'])
 def peoplenum():
     
-    pnum = 1	# DB????????띠럾??筌뤾쑴沅롧뼨?
+    pnum = 1	
     
     res = {
         "version": "2.0",
@@ -107,7 +104,7 @@ def peoplenum():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "?熬곣뫗?????덊닡?洹먮맦而??????筌뤾쑴??: " + str(pnum)
+                        "text": "현재 동아리원 : " + str(pnum)
                     }
                 }
             ]
