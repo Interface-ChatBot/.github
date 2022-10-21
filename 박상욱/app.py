@@ -1,4 +1,4 @@
-from flask import Flask,request,jsonify
+﻿from flask import Flask,request,jsonify
 
 application = Flask(__name__)
 
@@ -11,14 +11,14 @@ def fee():
     
     req = request.get_json()
 
-    userRes = req["userRequest"]["utterance"]	 				#?ъ슜??諛쒗솕 ???
-    member_type = req["action"]["clientExtra"]["member_type"]	#諛붾줈媛湲?parameter ???
+    userRes = req["userRequest"]["utterance"]	 				#??????꾩룇裕??????
+    member_type = req["action"]["clientExtra"]["member_type"]	#?꾩룆?餓λ뛼泥???parameter ????
         
     fee = 0
     
-    if member_type == "신입생":
+    if member_type == "재학생":
         fee = 20000
-    elif member_type == "재학생":
+    elif member_type == "신입생":
         fee = 20000
     
     res = {
@@ -27,7 +27,7 @@ def fee():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "동아리 회비\n" + member_type + " : " + str(fee) + "원",
+                        "text": "동아리 회비 안내\n" + member_type + " : " + str(fee) + "원"
                     }
                 }
             ]
@@ -36,9 +36,9 @@ def fee():
     
     return jsonify(res)
 
+
 @application.route("/wifi",methods=['POST'])
 def wifi():
-    req = request.get_json()
     
     res = {
         "version": "2.0",
@@ -46,7 +46,7 @@ def wifi():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "Wi-Fi name : 어서와코딩은처음이지? (5G)\nPassword : 518interface"
+                        "text": "Wi-Fi name : 어서와코딩은 처음이지 (5G)\nPassword : 518interface"
                     }
                 }
             ]
@@ -66,17 +66,17 @@ def isroom():
     pnum = 0	
     text = ""
     
-    if userRes == "?ъ떎":
-        # DB ?ъ떎?몄썝 利앷?
+    if userRes == "????:
+        # DB ????筌뤾쑴??嶺뚯빘鍮?
         pnum += 1
         
-    elif userRes == "?댁떎":
-        # DB ?ъ떎?몄썝 媛먯냼
+    elif userRes == "??怨룸펲":
+        # DB ????筌뤾쑴???띠룆흮??
         pnum += -1
             
-    text = "?꾩옱 ?ъ떎 ?몄썝? " + str(pnum) + "紐??낅땲??"
+    text = "?熬곣뫗???????筌뤾쑴??? " + str(pnum) + "嶺????낅퉵??"
     
-    # 6?쒖뿉 ?ъ떎?몄썝 0?쇰줈 珥덇린??
+    # 6??戮?뱺 ????筌뤾쑴??0??怨쀬Ŧ ?貫?껆뵳??
     
     
     res = {
@@ -99,7 +99,7 @@ def isroom():
 @application.route("/peoplenum",methods=['POST'])
 def peoplenum():
     
-    pnum = 1	# DB?먯꽌 媛?媛?몄삤湲?
+    pnum = 1	# DB????????띠럾??筌뤾쑴沅롧뼨?
     
     res = {
         "version": "2.0",
@@ -107,7 +107,7 @@ def peoplenum():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "?꾩옱 ?숈븘由щ갑 ?ъ떎 ?몄썝 : " + str(pnum)
+                        "text": "?熬곣뫗?????덊닡?洹먮맦而??????筌뤾쑴??: " + str(pnum)
                     }
                 }
             ]
@@ -127,7 +127,7 @@ def clubroom():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "동아리방 위치 : 세종대하굑 학생회관 518호\nhttps://naver.me/F6mxi8mf"
+                        "text": "서울특별시 광진구 능동로 209 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf"
                     }
                 }
             ]
