@@ -134,7 +134,17 @@ def clubroom():
     
     return jsonify(res)
 
+# Interface introduction
+@application.route("/introduction",methods = ['POST'])
+def introduction():
+    #req = request.get_json()
+    
+    text= "세종대학교 중앙동아리 인터페이스 연혁"
+    
+    #res = RES(text)
+    
+    return jsonify(text)
 
 if __name__ == "__main__":
-    application.run(host='10.128.0.2', port=5000, threaded=True)
-    #application.run(host='0.0.0.0', port=5000, threaded=True)
+    #application.run(host='10.128.0.2', port=5000, threaded=True)
+    application.run(host='0.0.0.0', port=5000, threaded=True)
