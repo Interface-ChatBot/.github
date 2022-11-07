@@ -118,3 +118,8 @@ def generation():
     data = _fetch('generation')
 
     return data
+
+## 사용 예시
+'''
+from interface_db import *
+'''
