@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask,request,jsonify
+# from interface_db import *
 
 application = Flask(__name__)
 
@@ -14,8 +15,15 @@ def fee():
 
     userRes = req["userRequest"]["utterance"]	 				
     member_type = req["action"]["clientExtra"]["member_type"]	
-        
+    
+    #data = fee()
+
     fee = 0
+    # for i in data
+    #     if i["name"] == member_type
+    #           fee = 20000
+    #     elif i["name"] == member_type
+    #           fee = 20000
     
     if member_type == "재학생":
         fee = 20000
@@ -41,6 +49,12 @@ def fee():
 @application.route("/wifi",methods=['POST'])
 def wifi():
     
+    # data = wifi()
+    # str = "Wi-Fi name : "
+    # for i in data
+#	   str += i["name"] + " pw : " + i["pw"]
+#	   str += "\n"
+
     res = {
         "version": "2.0",
         "template": {
@@ -48,6 +62,7 @@ def wifi():
                 {
                     "simpleText": {
                         "text": "Wi-Fi name : 어서와코딩은 처음이지 (5G)\nPassword : 518interface"
+                        #"text": str
                     }
                 }
             ]
@@ -67,15 +82,15 @@ def isroom():
     pnum = 0	
     text = ""
     
-    if userRes == "????:
+    if userRes == "재실":
         # DB 
-        pnum += 1
+        # mic_plus()
         
-    elif userRes == "":
+    elif userRes == "퇴실":
         # DB 
-        pnum += -1
+        # mic_minus()
             
-    text = ""
+    #data = mic_show()
     
     res = {
         "version": "2.0",
@@ -84,6 +99,7 @@ def isroom():
                 {
                     "simpleText": {
                         "text": text
+                        #"text": data
                     }
                 }
             ]
@@ -119,6 +135,8 @@ def peoplenum():
 @application.route("/clubroom",methods=['POST'])
 def clubroom():
     
+    # data = location()
+    
     res = {
         "version": "2.0",
         "template": {
@@ -126,6 +144,7 @@ def clubroom():
                 {
                     "simpleText": {
                         "text": "서울특별시 광진구 능동로 209 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf"
+                        #"text": "Form : " + data["form"] + " Address : " + data["adress"]
                     }
                 }
             ]
