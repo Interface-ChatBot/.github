@@ -16,18 +16,22 @@ def _fee():
     userRes = req["userRequest"]["utterance"]	 				
     member_type = req["action"]["clientExtra"]["member_type"]	
     
+    print(userRes)
+    print(member_type)
+
     data = fee()
 
     club_fee = 0
     m_type = ""
 
+
     for i in data:
         if i["type"] == member_type:
-            club_fee = 20000
+            club_fee = i["fee"]
             m_type = "신입생"
         elif i["type"] == member_type:
             m_type = "재학생"
-            club_fee = 20000
+            club_fee = i["fee"] 
     '''
     if member_type == "재학생":
         fee = 20000
