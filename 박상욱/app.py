@@ -88,7 +88,7 @@ def isroom():
     req = request.get_json()
     
     #userRes = req["userRequest"]["utterance"]
-    res = req["action"]["clientExtra"]["res"]	    
+    res = req["action"]["clientExtra"]["Res"]	    
 
     pnum = 0	
     text = ""
