@@ -87,17 +87,18 @@ def isroom():
     
     req = request.get_json()
     
-    userRes = req["userRequest"]["utterance"]	 
-    
+    #userRes = req["userRequest"]["utterance"]
+    res = req["action"]["clientExtra"]["res"]	    
+
     pnum = 0	
     text = ""
     
-    if userRes == "재실":
+    if res == "재실":
         # DB 
         mic_plus()
         
-    elif userRes == "퇴실":
-        DB 
+    elif res == "퇴실":
+        # DB 
         mic_minus()
             
     data = mic_show()
