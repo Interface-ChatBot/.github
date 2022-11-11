@@ -29,4 +29,4 @@ clubroom_adress = location()
 
 #출력예시
 for dic in clubroom_adress:
-    print(f'Form : {dic["form"]} | Adress : {dic["adress"]}')'''
+    print(f'Form : {dic["type"]} | Adress : {dic["adress"]}')'''
