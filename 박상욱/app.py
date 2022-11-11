@@ -20,9 +20,9 @@ def _fee():
 
     club_fee = 0
     for i in data:
-        if i["name"] == member_type:
+        if i["type"] == member_type:
             club_fee = 20000
-        elif i["name"] == member_type:
+        elif i["type"] == member_type:
             club_fee = 20000
     '''
     if member_type == "재학생":
