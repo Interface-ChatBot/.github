@@ -1,3 +1,4 @@
+# -*- coding: cp949 -*-
 # -*- coding: utf-8 -*-
 from flask import Flask,request,jsonify
 from interface_db_edit import *
