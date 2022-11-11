@@ -31,13 +31,15 @@ def _fee():
         fee = 20000
     '''
 
+    str = "동아리 회비 안내" + "\n" + member_type + " : " + str(club_fee) + "원"
+
     res = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "동아리 회비 안내" + "\n" + member_type + " : " + str(club_fee) + "원"
+                        "text": str
                     }
                 }
             ]
