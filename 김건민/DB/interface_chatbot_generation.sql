@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `generation`;
 CREATE TABLE `generation` (
   `generation` int NOT NULL,
   `num` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
