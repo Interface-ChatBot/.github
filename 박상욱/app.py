@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask,request,jsonify
-# from interface_db import *
+from interface_db import *
 
 application = Flask(__name__)
 
@@ -16,20 +16,21 @@ def fee():
     userRes = req["userRequest"]["utterance"]	 				
     member_type = req["action"]["clientExtra"]["member_type"]	
     
-    #data = fee()
+    data = fee()
 
     fee = 0
-    # for i in data
-    #     if i["name"] == member_type
-    #           fee = 20000
-    #     elif i["name"] == member_type
-    #           fee = 20000
-    
+    for i in data:
+        if i["name"] == member_type:
+            fee = 20000
+        elif i["name"] == member_type:
+            fee = 20000
+    '''
     if member_type == "재학생":
         fee = 20000
     elif member_type == "신입생":
         fee = 20000
-    
+    '''
+
     res = {
         "version": "2.0",
         "template": {
@@ -47,31 +48,30 @@ def fee():
 
 
 @application.route("/wifi",methods=['POST'])
-def wifi():
+def _wifi():
     
-    # data = wifi()
-    # str = "Wi-Fi name : "
-    # for i in data
-#	   str += i["name"] + " pw : " + i["pw"]
-#	   str += "\n"
+     data = wifi()
+     str = "Wi-Fi name : "
+     for i in data:
+         str += i["name"] + " pw : " + i["pw"]
+         str += "\n"
 
-    res = {
-        "version": "2.0",
-        "template": {
-            "outputs": [
-                {
-                    "simpleText": {
-                        "text": "Wi-Fi name : 어서와코딩은 처음이지 (5G)\nPassword : 518interface"
-                        #"text": str
-                    }
-                }
-            ]
-        }
-    }
+     res = {
+         "version": "2.0",
+         "template": {
+             "outputs": [
+                 {
+                     "simpleText": {
+                         #"text": "Wi-Fi name : 어서와코딩은 처음이지 (5G)\nPassword : 518interface"
+                         "text": str
+                     }
+                 }
+             ]
+         }
+     }
     
-    return jsonify(res)
+     return jsonify(res)
 
-''''
 @application.route("/isroom",methods=['POST'])
 def isroom():
     
@@ -84,13 +84,13 @@ def isroom():
     
     if userRes == "재실":
         # DB 
-        # mic_plus()
+        mic_plus()
         
     elif userRes == "퇴실":
-        # DB 
-        # mic_minus()
+        DB 
+        mic_minus()
             
-    #data = mic_show()
+    data = mic_show()
     
     res = {
         "version": "2.0",
@@ -98,8 +98,8 @@ def isroom():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": text
-                        #"text": data
+                        #"text": text
+                        "text": str(data)
                     }
                 }
             ]
@@ -107,13 +107,11 @@ def isroom():
     }
         
     return jsonify(res)
- '''
 
-'''
 @application.route("/peoplenum",methods=['POST'])
 def peoplenum():
     
-    pnum = 1	
+    pnum = mic_show()
     
     res = {
         "version": "2.0",
@@ -129,22 +127,23 @@ def peoplenum():
     }
         
     return jsonify(res)
-'''
 
 
 @application.route("/clubroom",methods=['POST'])
 def clubroom():
     
-    # data = location()
-    
+    data = location()
+
+    str = data[1]["type"] + " : " + data[1]["adress"] + "\n" + data[0]["type"] + " : " + data[0]["adress"]
+
     res = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "서울특별시 광진구 능동로 209 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf"
-                        #"text": "Form : " + data["form"] + " Address : " + data["adress"]
+                        #"text": "서울특별시 광진구 능동로 209 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf"
+                        "text": str
                     }
                 }
             ]
