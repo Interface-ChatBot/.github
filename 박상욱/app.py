@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask,request,jsonify
-from interface_db_edit import *
+from interface_db import *
 
 application = Flask(__name__)
 
@@ -9,7 +9,7 @@ def hello():
     return "Hello goorm!"
 
 @application.route("/fee",methods=['POST'])
-def fee():
+def _fee():
     
     req = request.get_json()
 
@@ -18,12 +18,12 @@ def fee():
     
     data = fee()
 
-    fee = 0
+    club_fee = 0
     for i in data:
         if i["name"] == member_type:
-            fee = 20000
+            club_fee = 20000
         elif i["name"] == member_type:
-            fee = 20000
+            club_fee = 20000
     '''
     if member_type == "재학생":
         fee = 20000
