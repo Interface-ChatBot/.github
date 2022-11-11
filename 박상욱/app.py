@@ -1,4 +1,3 @@
-# -*- coding: cp949 -*-
 # -*- coding: utf-8 -*-
 from flask import Flask,request,jsonify
 from interface_db_edit import *
@@ -20,10 +19,14 @@ def _fee():
     data = fee()
 
     club_fee = 0
+    m_type = ""
+
     for i in data:
         if i["type"] == member_type:
             club_fee = 20000
+            m_type = "신입생"
         elif i["type"] == member_type:
+            m_type = "재학생"
             club_fee = 20000
     '''
     if member_type == "재학생":
@@ -32,7 +35,7 @@ def _fee():
         fee = 20000
     '''
 
-    str = "동아리 회비 안내" + "\n" + member_type + " : " + str(club_fee) + "원"
+    str = "동아리 회비 안내" + "\n" + m_type + " : " + str(club_fee) + "원"
 
     res = {
         "version": "2.0",
