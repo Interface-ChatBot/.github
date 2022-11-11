@@ -35,7 +35,7 @@ def _fee():
         fee = 20000
     '''
 
-    str = "동아리 회비 안내" + "\n" + m_type + " : " + str(club_fee) + "원"
+    textstr = "동아리 회비 안내" + "\n" + m_type + " : " + str(club_fee) + "원"
 
     res = {
         "version": "2.0",
@@ -43,7 +43,7 @@ def _fee():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": str
+                        "text": textstr
                     }
                 }
             ]
