@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask,request,jsonify
-from interface_db import *
+from interface_db_edit import *
 
 application = Flask(__name__)
 
