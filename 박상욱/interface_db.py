@@ -111,6 +111,12 @@ def link():
     return data
 
 _user = mysql_user_info.user_info
+print(_user.db)
+print(_user.host)
+print(_user.user)
+print(_user.passwd)
+print(_user.port)
+print(_user.charset)
 
 ## generation_of_member
 
