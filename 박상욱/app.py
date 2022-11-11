@@ -27,10 +27,10 @@ def _fee():
 
     if data[0]["type"] == member_type:
         club_fee = data[0]["fee"]
-        m_type = str(data[0]["type"])
+        m_type = "신입생"#data[0]["type"].encoding("utf-8)
     elif data[1]["type"] == member_type:
         club_fee = data[1]["fee"]
-        m_type = str(data[1]["type"])
+        m_type = "재학생"#str(data[1]["type"])
 
     '''
     if member_type == "재학생":
