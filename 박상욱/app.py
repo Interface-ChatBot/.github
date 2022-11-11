@@ -37,7 +37,7 @@ def _fee():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "동아리 회비 안내\n" + member_type + " : " + str(fee) + "원"
+                        "text": "동아리 회비 안내" + "\n" + member_type + " : " + str(club_fee) + "원"
                     }
                 }
             ]
