@@ -4,13 +4,14 @@ import mysql_user_info
 
 #데이터 베이스에서 데이터 가져오기
 def _fetch(table):
-    with pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'], charset=_user['charset']) as db:
-        with db.cursor(pymysql.cursors.DictCursor) as cur:
-            sql = 'SELECT * FROM ' + table
-            cur.execute(sql)
-            db.commit()
+    db =  pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'], charset=_user['charset'])
+    cur = db.cursor(pymysql.cursors.DictCursor)
+    sql = 'SELECT * FROM ' + table
+    cur.execute(sql)
+    db.commit()
 
-            data = cur.fetchall()
+    data = cur.fetchall()
+    db.close()
 
     return data
 
@@ -46,12 +47,13 @@ def mic_show():
 
 #현 인원수 데이터 1 증가
 def mic_plus():
-    with pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'],
-                         charset=_user['charset']) as db:
-        with db.cursor(pymysql.cursors.DictCursor) as cur:
-            sql = 'UPDATE member_in_clubroom SET num_of_member = num_of_member + 1'
-            cur.execute(sql)
-            db.commit()
+    db = pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'],
+                         charset=_user['charset'])
+    cur = db.cursor(pymysql.cursors.DictCursor)
+    sql = 'UPDATE member_in_clubroom SET num_of_member = num_of_member + 1'
+    cur.execute(sql)
+    db.commit()
+    db.close()
 
 #현 인원수 데이터 1 감소
 #but 현 인워수가 0명인 경우 아무것도 하지 안음
@@ -62,21 +64,23 @@ def mic_minus():
         return 0
 
     else:
-        with pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'],
-                             charset=_user['charset']) as db:
-            with db.cursor(pymysql.cursors.DictCursor) as cur:
-                sql = 'UPDATE member_in_clubroom SET num_of_member = num_of_member - 1'
-                cur.execute(sql)
-                db.commit()
+        db = pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'],
+                             charset=_user['charset'])
+        cur = db.cursor(pymysql.cursors.DictCursor)
+        sql = 'UPDATE member_in_clubroom SET num_of_member = num_of_member - 1'
+        cur.execute(sql)
+        db.commit()
+        db.close()
 
 #현 인원수 데이터를 0으로 초기화
 def mic_init():
-    with pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'],
-                         charset=_user['charset']) as db:
-        with db.cursor(pymysql.cursors.DictCursor) as cur:
-            sql = 'UPDATE member_in_clubroom SET num_of_member = 0'
-            cur.execute(sql)
-            db.commit()
+    db = pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'],
+                         charset=_user['charset'])
+    cur = db.cursor(pymysql.cursors.DictCursor)
+    sql = 'UPDATE member_in_clubroom SET num_of_member = 0'
+    cur.execute(sql)
+    db.commit()
+    db.close()
 
 ###clubroom_location
 
@@ -111,12 +115,6 @@ def link():
     return data
 
 _user = mysql_user_info.user_info
-print(_user['db'])
-print(_user['host'])
-print(_user['user'])
-print(_user['passwd'])
-print(_user['port'])
-print(_user['charset'])
 
 ## generation_of_member
 
