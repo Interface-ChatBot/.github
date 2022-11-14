@@ -119,6 +119,7 @@ def introduction():
 @application.route("/schedule",methods = ['POST'])
 def schedule():
     req = request.get_json()
+    print(req)
     
     userRes = req["userRequest"]["utterance"]
     Month_type = req["action"]["clientExtra"]["Month_type"]
@@ -167,6 +168,7 @@ def schedule():
 @application.route("/people",methods = ['POST'])
 def people():
     req = request.get_json()
+    print(req)
     
     userRes = req["userRequest"]["utterance"]
     Generation_type = req["action"]["clientExtra"]["Generation_type"]
@@ -196,6 +198,7 @@ def people():
 @application.route("/suggestion",methods = ['POST'])
 def suggestion():
     req = request.get_json()
+    print(req)
 
     res = {
         "version": "2.0",
