@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from flask import Flask, request, jsonify
 
 application = Flask(__name__)
@@ -94,7 +96,7 @@ def people():
     userRes = req["userRequest"]["utterance"]
     Generation_type = req["action"]["clientExtra"]["Generation_type"]
     
-    dic_gen = {30 : 10, 31 : 20, 32 : 34, 33 : 45, 34 : 50, 35 : 70}
+    dic_gen = {30 : 20, 31 : 23, 32 : 23, 33 : 36, 34 : 15, 35 : 58}
     
     if Generation_type == "30기":
         people = dic_gen[30]
@@ -129,20 +131,29 @@ def people():
 @application.route("/suggestion",methods = ['POST'])
 def suggestion():
     req = request.get_json()
-    
     res = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
-                    "simpleText": {
-                        "text": ""
+                    "basicCard":{
+                        "title" : "인터페이스 건의사항",
+                        "thumbnail":{
+                            "imageUrl":"https://~~"
+                        },
+                        "button": [
+                            {    
+                                "action": "webLink",
+                                "label" : "구글폼 링크",
+                                "webLinkUrl":"https://~~"
+                            }
+                        ]
                     }
                 }
             ]
         }
     }
-    
+             
     return jsonify(res)
 
 if __name__ == "__main__":
