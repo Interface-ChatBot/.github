@@ -5,7 +5,7 @@ import mysql_user_info
 def _fetch():
     with pymysql.connect(db=_user['db'], host=_user['host'], user=_user['user'], passwd=_user['passwd'], port=_user['port'], charset=_user['charset']) as db:
         with db.cursor(pymysql.cursors.DictCursor) as cur:
-            sql = 'SELECT * FROM location'
+            sql = 'SELECT * FROM generation'
             cur.execute(sql)
             db.commit()
 
@@ -13,20 +13,19 @@ def _fetch():
 
     return data
 
-#[{form:'form', adress:'adress'}] 형식의 딕셔너리 리스트 형태로 data 반환
-def location():
+#기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
+def generation():
     data = _fetch()
 
     return data
 
 _user = mysql_user_info.user_info
 
-#예시
 '''
-from clubroom_location import *
+from generation_of_member import *
 
-clubroom_adress = location()
+generation = generation()
 
-#출력예시
-for dic in clubroom_adress:
-    print(f'Form : {dic["type"]} | Adress : {dic["adress"]}')'''
+for l in generation:
+    print(f'Generation : {l["generation"]} | Number : {l["num"]}')
+'''

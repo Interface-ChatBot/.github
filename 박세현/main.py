@@ -1,3 +1,5 @@
+# -*- coding: utf8 -*-
+
 from flask import Flask, request, jsonify
 from res import RES
 
@@ -17,6 +19,7 @@ def fee():
     
     req = request.get_json()
 
+    
     userRes = req["userRequest"]["utterance"]	 				#사용자 발화 저장
     member_type = req["action"]["clientExtra"]["member_type"]	#바로가기 parameter 저장
         
@@ -106,8 +109,7 @@ def clubroom():
 def introduction():
     req = request.get_json()
     
-    text= "세종대학교 중앙동아리 인터페이스 연혁"
-    
+    text="인터페이스 소개\n" + "동아리 연혁 : 1988년\n"+ "주요 활동\n1. 동아리 자체 대회/ 전시회\n2. 다양한 스터디\n3. 소모임 활동"
     res = RES(text)
     
     return jsonify(res)
@@ -118,10 +120,46 @@ def introduction():
 def schedule():
     req = request.get_json()
     
-    text = "프로젝트 전시회"
+    userRes = req["userRequest"]["utterance"]
+    Month_type = req["action"]["clientExtra"]["Month_type"]
     
+    dic = {"3월" : "1학기 개강총회, 신입생 환영회, 봄엠티", 
+           "4월" : "스터디, 소모임",
+           "5월" : "기엠티",
+           "6월" : "게임 대회",
+           "7월" : "1학기 종강총회",
+           "8월" : "여름엠티 or 가을 엠티",
+           "9월" : "2학기 개강총회",
+           "10월" : "기타 행사(게임 대회, 상영 행사)",
+           "11월" : "창립제",
+           "12월" : "프로그래밍 전시회, 2학기 종강 총회"
+          }
+    
+    if Month_type == "3월":
+        schedule = dic["3월"]
+    elif Month_type == "4월":
+        schedule = dic["4월"]
+    elif Month_type == "5월":
+        schedule = dic["5월"]
+    elif Month_type == "6월":
+        schedule = dic["6월"]
+    elif Month_type == "7월":
+        schedule = dic["7월"]
+    elif Month_type == "8월":
+        schedule = dic["8월"]
+    elif Month_type == "9월":
+        schedule = dic["9월"]
+    elif Month_type == "10월":
+        schedule = dic["10월"]
+    elif Month_type == "11월":
+        schedule = dic["11월"]
+    elif Month_type == "12월":
+        schedule = dic["12월"]
+
+    text=Month_type + " 동아리 일정 안내\n" + schedule
+        
     res = RES(text)
-    
+
     return jsonify(res)
 
 
@@ -130,30 +168,39 @@ def schedule():
 def people():
     req = request.get_json()
     
-    generation_type = req["action"]["detailParams"]["generation_type"]["value"]
+    userRes = req["userRequest"]["utterance"]
+    Generation_type = req["action"]["clientExtra"]["Generation_type"]
     
-    people = 0
+    dic_gen = {30 : 10, 31 : 20, 32 : 34, 33 : 45, 34 : 50, 35 : 70}
     
-    if generation_type == "30기":
-        people = 10
-    elif generation_type == "31기":
-        people = 20
-    elif generation_type == "32기":
-        people = 34
-    elif generation_type == "33기":
-        people = 45
-    elif generation_type == "34기":
-        people = 50
-    elif generation_type == "35기":
-        people = 70
-    
-    
-    text = "[기수별 인원 수]\n" + generation_type + " : " +str(people) + "명"
-    
+    if Generation_type == "30기":
+        people = dic_gen[30]
+    elif Generation_type == "31기":
+        people = dic_gen[31]
+    elif Generation_type == "32기":
+        people = dic_gen[32]
+    elif Generation_type == "33기":
+        people = dic_gen[33]
+    elif Generation_type == "34기":
+        people = dic_gen[34]
+    elif Generation_type == "35기":
+        people = dic_gen[35]
+
+    text = "인터페이스 " + Generation_type + " : " + str(people) + "명"
     res = RES(text)
     
     return jsonify(res)
 
+
+# Interface suggestion
+@application.route("/suggestion",methods = ['POST'])
+def suggestion():
+    req = request.get_json()
+
+    text = ""
+    res = RES(text)
+    
+    return jsonify(res)
 
 #인터페이스 집부 구성원 안내
 @application.route("/executive_member", methods=['POST'])
