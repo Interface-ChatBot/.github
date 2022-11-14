@@ -27,10 +27,12 @@ def _fee():
 
     if data[0]["type"] == member_type:
         club_fee = data[0]["fee"]
-        m_type = "신입생"#data[0]["type"].encoding("utf-8)
+        m_type = "신입생"
+        #data[0]["type"].encoding("utf-8)
     elif data[1]["type"] == member_type:
         club_fee = data[1]["fee"]
-        m_type = "재학생"#str(data[1]["type"])
+        m_type = "재학생"
+        #str(data[1]["type"])
 
     '''
     if member_type == "재학생":
@@ -61,9 +63,9 @@ def _fee():
 def _wifi():
     
      data = wifi()
-     str = "Wi-Fi name : "
+     str = ""
      for i in data:
-         str += i["name"] + " pw : " + i["pw"]
+         str += "name : " + i["name"] + " pw : " + i["pw"]
          str += "\n"
 
      res = {
@@ -110,13 +112,15 @@ def isroom():
                 {
                     "simpleText": {
                         #"text": text
-                        "text": str(data)
+                        "text": "현재 동아리원 : " + str(data)
                     }
                 }
             ]
         }
     }
-        
+    
+    print(res)
+
     return jsonify(res)
 
 @application.route("/peoplenum",methods=['POST'])
@@ -152,10 +156,16 @@ def clubroom():
         "template": {
             "outputs": [
                 {
-                    "simpleText": {
-                        #"text": "서울특별시 광진구 능동로 209 세종대학교 학생회관 518호\nhttps://naver.me/F6mxi8mf"
-                        "text": str
-                    }
+		    "basicCard":  {
+                        "description": "서울특별시 광진구 능동로 209 세종대학교 학생회관 518호",
+                        "buttons": [
+                            {
+                                "action": "webLink",
+                                "label": "네이버 지도 바로가기",
+                                "webLinkUrl": "https://naver.me/F6mxi8mf"
+                            }
+                        ]
+                    }   
                 }
             ]
         }
@@ -163,17 +173,6 @@ def clubroom():
     
     return jsonify(res)
 
-# Interface introduction
-@application.route("/introduction",methods = ['POST'])
-def introduction():
-    #req = request.get_json()
-    
-    text= "세종대학교 중앙동아리 인터페이스 연혁"
-    
-    #res = RES(text)
-    
-    return jsonify(text)
 
 if __name__ == "__main__":
-    #application.run(host='10.128.0.2', port=5000, threaded=True)
     application.run(host='0.0.0.0', port=5000, threaded=True)
