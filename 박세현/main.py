@@ -19,6 +19,7 @@ def fee():
     
     req = request.get_json()
 
+    
     userRes = req["userRequest"]["utterance"]	 				#사용자 발화 저장
     member_type = req["action"]["clientExtra"]["member_type"]	#바로가기 parameter 저장
         
@@ -101,12 +102,6 @@ def clubroom():
     res = RES(text)
     
     return jsonify(res)
-
-
-@application.route("/")
-def hello():
-    return "Hello goorm!"
-
 
 
 # Interface introduction
