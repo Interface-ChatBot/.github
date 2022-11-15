@@ -173,6 +173,41 @@ def clubroom():
     
     return jsonify(res)
 
+@application.route("/clubroom",methods=['POST'])
+def password():
+
+    #학번 이름
+    #22000000 김인페
+    userRes = req["userRequest"]["utterance"]
+
+    data = member_check(userRes.split(' '))
+
+    str = ""
+
+    if data==1:
+        str = "동아리 비밀번호 : " + "7585"
+    else:
+        str = "정보가 일치하지 않습니다" + "\n" + "다시 입력하거나 집부에게 문의 부탁드립니다."
+
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": str
+                    }
+                }
+            ]
+        }
+    }
+    
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', port=5000, threaded=True)
+
+
+
+
+
+
