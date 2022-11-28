@@ -18,6 +18,7 @@ def _fetch(table):
 
 #매개변수 user_input에 대한 유사도 검증 후 {'단어' : 유사율}의 딕셔너리 형태로 0.5 이상 유사한 단어 반환, 0.5 유사율을 충족시키는 단어가 없을 경우 'None' 반환
 def command(user_input):
+    print(user_input)
     result = {}
     for dic in _data:
         example = dic['example']
