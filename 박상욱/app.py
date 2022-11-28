@@ -167,15 +167,15 @@ def clubroom():
                                 "webLinkUrl": "https://naver.me/F6mxi8mf"
                             }
                         ]
-                    '''
-                        "buttons": [
-                            {
-                                "action": "webLink",
-                                "label": data[0]["type"],
-                                "webLinkUrl": data[0]["adress"]
-                            }
-                        ]
-                    '''
+                        
+                        #"buttons": [
+                        #    {
+                        #        "action": "webLink",
+                        #        "label": data[0]["type"],
+                        #        "webLinkUrl": data[0]["adress"]
+                        #    }
+                        #]
+                        
                     }   
                 }
             ]
