@@ -274,8 +274,8 @@ def introduction():
     return jsonify(res)
 
 # Similliar Check
-@application.route("/introduction",methods = ['POST'])
-def introduction():
+@application.route("/similliar",methods = ['POST'])
+def similliar():
     req = request.get_json()
     
     result = command(req) # 'None' or {"ds":"sd"}
