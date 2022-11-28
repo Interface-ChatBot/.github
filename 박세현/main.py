@@ -70,16 +70,16 @@ def isroom():
     print(req)
 
     #userRes = req["userRequest"]["utterance"]
-    room_type = req["action"]["clientExtra"]["room_type"]	    
+    room_type = req["action"]["detailParams"]["Room_type"]["value"].encode('utf-8')	    
     print(room_type)
     pnum = 0	
     text = ""
     
-    if room_type.encode('utf-8') == "재실":
+    if room_type == "재실":
         # DB 
         mic_plus()
         
-    elif room_type.encode('utf-8') == "퇴실":
+    elif room_type == "퇴실":
         # DB 
         mic_minus()
             
@@ -229,6 +229,10 @@ def introduction():
 @application.route("/people", methods = ['POST'])
 def count():
     req = request.get_json()
+
+    print(req)
+
+    str = generation()
     res = {
         "version": "2.0",
           "template": {
@@ -392,41 +396,40 @@ def suggestion():
     return jsonify(res)
 
 
-#인터페이스 집부 구성원 안내
 @application.route("/executive_member", methods=['POST'])
 def executive_member():
     req = request.get_json()
-    text="회장:류국봉 wntlghks0107@naver.com\n고문: 박상욱 dkxkqkrtkddn@naver.com\n총무:임영빈 wlso@naver.com"
-    res = RES(text)
-
-    return jsonify(res)
-
-
-#인터페이스 링크 안내
-@application.route("/interface_link", methods=['POST'])
-def interface_link():
-    req = request.get_json()
-
     res = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "인스타그램:https://www.instagram.com/interface518/"+"\n"
-                                "페이스북:https://www.instagram.com/interface518/"+"\n" # 인스타
-                                "홈페이지:https://sejong-interface.github.io/"+"\n"
-                                "깃허브: https://github.com/sejonginterface"+"\n"
-                                "메일:518interface@gmail.com"
+                        "text": "회장:류국봉 이메일:rkb429@naver.com\n 학술부장:이규리 이메일:qyul2058@gmail.com\n 학술차장:권하윤 이메일:cupertino88@naver.com\n 기획부장:이승언 이메일:banasu0723@gmail.com\n 기획차장:손재호 이메일:daymos999@gmail.comm\n 총무:임영빈 이메일:dudqlsquseo@naver.com\n 소통:동기창 이메일:tongjohn98@gmail.com\n 고문:박상욱 이메일:dkxkqkrtkddn@naver.com\n 기장:홍지섭 이메일:ghdwltjq5749@naver.com\n 부기장:공민성 이메일:gongminseong9413@gmail.com"}
+                }
+            ]
+        }
+    }
+    return jsonify(res)
+
+
+@application.route("/interface_link", methods=['POST'])
+def interface_link():
+    req = request.get_json()
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "인스타그램:https://www.instagram.com/interface518 \n 페이스북:https://www.facebook.com/interface518 \n 홈페이지:https://sejong-interface.github.io \n 깃허브: https://github.com/sejonginterface \n 메일:518interface@gmail.com \n"
+
                     }
                 }
             ]
         }
     }
-
     return jsonify(res)
-
-
 
 
 if __name__ == "__main__":
