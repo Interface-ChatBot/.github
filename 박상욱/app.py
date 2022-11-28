@@ -286,9 +286,8 @@ def similliar():
     if result == "None":
         text = "유사한 명령어가 없습니다"
     else :
-        sorted_dict = sorted(result.items(), key = lambda item: item[1])
-        for cmd in sorted_dict:
-            text += "".join(cmd) + " "
+        for cmd in result:
+            text += cmd + " "
 
     res = {
         "version": "2.0",
