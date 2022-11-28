@@ -277,9 +277,10 @@ def introduction():
 @application.route("/similliar",methods = ['POST'])
 def similliar():
     req = request.get_json()
-    
+	
+    userRes = req["userRequest"]["utterance"]    
 
-    result = command(req) # 'None' or {"ds":"sd"}
+    result = command(userRes) # 'None' or {"ds":"sd"}
    
     text = "."
     if result == "None":
