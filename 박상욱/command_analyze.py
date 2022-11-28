@@ -43,7 +43,7 @@ def check(sentence):
     for i in range(len(sentence)):
         try:
             if('z'>=sentence[i]>='a'or 'Z'>=sentence[i]>='A'):
-            return 1
+                return 1
         except KeyError:pass
     return 0
 
