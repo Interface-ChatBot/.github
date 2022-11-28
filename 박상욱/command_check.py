@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from command_analyze import *
 import pymysql
 import mysql_user_info
