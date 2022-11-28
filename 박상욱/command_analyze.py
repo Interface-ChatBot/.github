@@ -13,7 +13,7 @@ def s_list(sentence):
     s=[]
 
     for i in range(len(sentence)):
-        if(sentence[i]==' '):
+        if sentence[i]==' ':
             continue
         else:
             s.append(sentence[i])
