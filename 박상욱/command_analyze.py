@@ -11,7 +11,8 @@ def m_list(sentence):
 
 def s_list(sentence):
     s=[]
-
+    print("sentence")
+    print(sentence)
     for i in range(len(sentence)):
         print(i)
         if sentence[i]==' ':
