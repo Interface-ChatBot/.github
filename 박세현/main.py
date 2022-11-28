@@ -2,7 +2,7 @@
 from flask import Flask,request,jsonify
 from interface_db import *
 from res import RES
-
+from command_check import *
 
 application = Flask(__name__)
 
@@ -429,6 +429,37 @@ def interface_link():
             ]
         }
     }
+    return jsonify(res)
+
+# Similliar Check
+@application.route("/similliar",methods = ['POST'])
+def similliar():
+    req = request.get_json()
+	
+    userRes = req["userRequest"]["utterance"]    
+
+    result = command(userRes) # 'None' or {"ds":"sd"}
+   
+    text = ""
+    if result == "None":
+        text = "유사한 명령어가 없습니다"
+    else :
+        for cmd in result:
+            text += cmd + "\n"
+
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "이런 명령어를 찾으시는 건가요?\n" + text
+                    }
+                }
+            ]
+        }
+    }
+    
     return jsonify(res)
 
 
