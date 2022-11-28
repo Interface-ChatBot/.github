@@ -41,9 +41,10 @@ def similarity(x,y):#두 문장의 명사 튜풀을 넣고 같은 지 비교하�
 
 def check(sentence):
     for i in range(len(sentence)):
-        if('z'>=sentence[i]>='a'or 'Z'>=sentence[i]>='A'):
+        try:
+            if('z'>=sentence[i]>='a'or 'Z'>=sentence[i]>='A'):
             return 1
-
+        except KeyError:pass
     return 0
 
 

@@ -278,10 +278,12 @@ def introduction():
 def similliar():
     req = request.get_json()
     
+
     result = command(req) # 'None' or {"ds":"sd"}
+   
     text = "."
     if result == "None":
-        text = "유사항 명령어가 없습니다"
+        text = "유사한 명령어가 없습니다"
     else :
         sorted_dict = sorted(result.items(), key = lambda item: item[1])
         for cmd in sorted_dict:
