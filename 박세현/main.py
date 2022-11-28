@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf8 -*-
 from flask import Flask,request,jsonify
 from interface_db import *
 from res import RES
@@ -225,20 +225,48 @@ def password():
 def introduction():
     req = request.get_json()
     
-    text="인터페이스 소개\n" + "동아리 연혁 : 1988년\n"+ "주요 활동\n1. 동아리 자체 대회/ 전시회\n2. 다양한 스터디\n3. 소모임 활동"
-    res = RES(text)
-
-    return jsonify(res)
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+               {
+                   "listCard": {
+                       "header": {
+                           "title": "인터페이스를 소개합니다."
+                       },
+                       "items": [
+                           {
+                             "title":  "Interface는 프로그래밍 동아리로서, 1988년에 창설되었다."
+                           },
+                           {
+                              "title": "동아리 자체 대회/전시회",
+                               "description": "프로그래밍 전시회, 인커톤, 게임 대회",
+                              "imageUrl": "http://k.kakaocdn.net/dn/Eyjyd/btrQw2OoFRH/KXZMjlfXx0ZGAM0c2msxO0/800x800.jpg"
+                           },
+                           {
+                              "title": "다양한 스터디",
+                              "description": "C언어 스터디, 파이썬 스터디, 깃허브 스터디",
+                              "imageUrl":"https://blog.kakaocdn.net/dn/cShYtG/btqvQDIA107/R1K4NRACXNAUZmMdX9l2BK/img.jpg"
+                           },
+                           {
+                               "title": "소모임 활동",
+                               "description": "알고리즘 소모임, 글쓰기 소모임",
+                               "imageUrl":"https://img1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/16Sg/image/LgojfD8j5dSnxveW4zzMXD_L2vY.jpg"
+                           }
+                           
+                       ]
+                   }
+               }
+            ]
+        }
+    }
     
+    return jsonify(res)    
 
 # Interface activity schedule
 @application.route("/schedule",methods = ['POST'])
 def schedule():
     req = request.get_json()
-    print(req)
-    
-    userRes = req["userRequest"]["utterance"]
-    Month_type = req["action"]["clientExtra"]["Month_type"]
     
     dic = {"3월" : "1학기 개강총회, 신입생 환영회, 봄엠티", 
            "4월" : "스터디, 소모임",
@@ -251,62 +279,155 @@ def schedule():
            "11월" : "창립제",
            "12월" : "프로그래밍 전시회, 2학기 종강 총회"
           }
-    
-    if Month_type == "3월":
-        schedule = dic["3월"]
-    elif Month_type == "4월":
-        schedule = dic["4월"]
-    elif Month_type == "5월":
-        schedule = dic["5월"]
-    elif Month_type == "6월":
-        schedule = dic["6월"]
-    elif Month_type == "7월":
-        schedule = dic["7월"]
-    elif Month_type == "8월":
-        schedule = dic["8월"]
-    elif Month_type == "9월":
-        schedule = dic["9월"]
-    elif Month_type == "10월":
-        schedule = dic["10월"]
-    elif Month_type == "11월":
-        schedule = dic["11월"]
-    elif Month_type == "12월":
-        schedule = dic["12월"]
-
-    text=Month_type + " 동아리 일정 안내\n" + schedule
         
-    res = RES(text)
-
+    res = {
+         "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "월을 선택해주세요"
+                    }
+                }
+            ],
+            "quickReplies": [
+                {
+                    "messageText": "3월 인터페이스 일정 : " + dic["3월"],
+                    "action" : "message",
+                    "label" : "3월"
+                },
+                {
+                    "messageText": "4월 인터페이스 일정 : " + dic["4월"],
+                    "action" : "message",
+                    "label" : "4월"
+                },
+                {
+                    "messageText": "5월 인터페이스 일정 : " + dic["5월"],
+                    "action" : "message",
+                    "label" : "5월"
+                },
+                {
+                    "messageText": "6월 인터페이스 일정 : " + dic["6월"],
+                    "action" : "message",
+                    "label" : "6월"
+                },
+                {
+                    "messageText": "7월 인터페이스 일정 : " + dic["7월"],
+                    "action" : "message",
+                    "label" : "7월"
+                },
+                {
+                    "messageText": "8월 인터페이스 일정 : " + dic["8월"],
+                    "action" : "message",
+                    "label" : "8월"
+                },
+                {
+                    "messageText": "9월 인터페이스 일정 : " + dic["9월"],
+                    "action" : "message",
+                    "label" : "9월"
+                },
+                {
+                    "messageText": "10월 인터페이스 일정 : " + dic["10월"],
+                    "action" : "message",
+                    "label" : "10월"
+                },
+                {
+                    "messageText": "11월 인터페이스 일정 : " + dic["11월"],
+                    "action" : "message",
+                    "label" : "11월"
+                },
+                {
+                    "messageText": "12월 인터페이스 일정 : " + dic["12월"],
+                    "action" : "message",
+                    "label" : "12월"
+                }
+            ]
+        }
+    }
     return jsonify(res)
 
 
 # Information on the number of people Interface members
-@application.route("/people",methods = ['POST'])
-def people():
+@application.route("/schedule",methods = ['POST'])
+def schedule():
     req = request.get_json()
-    print(req)
     
-    userRes = req["userRequest"]["utterance"]
-    Generation_type = req["action"]["clientExtra"]["Generation_type"]
-    
-    dic_gen = {30 : 20, 31 : 23, 32 : 23, 33 : 36, 34 : 15, 35 : 58}
-    
-    if Generation_type == "30기":
-        people = dic_gen[30]
-    elif Generation_type == "31기":
-        people = dic_gen[31]
-    elif Generation_type == "32기":
-        people = dic_gen[32]
-    elif Generation_type == "33기":
-        people = dic_gen[33]
-    elif Generation_type == "34기":
-        people = dic_gen[34]
-    elif Generation_type == "35기":
-        people = dic_gen[35]
-
-    text = "인터페이스 " + Generation_type + " : " + str(people) + "명"
-    res = RES(text)
-    
+    dic = {"3월" : "1학기 개강총회, 신입생 환영회, 봄엠티", 
+           "4월" : "스터디, 소모임",
+           "5월" : "기엠티",
+           "6월" : "게임 대회",
+           "7월" : "1학기 종강총회",
+           "8월" : "여름엠티 or 가을 엠티",
+           "9월" : "2학기 개강총회",
+           "10월" : "기타 행사(게임 대회, 상영 행사)",
+           "11월" : "창립제",
+           "12월" : "프로그래밍 전시회, 2학기 종강 총회"
+          }
+        
+    res = {
+         "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "월을 선택해주세요"
+                    }
+                }
+            ],
+            "quickReplies": [
+                {
+                    "messageText": "3월 인터페이스 일정 : " + dic["3월"],
+                    "action" : "message",
+                    "label" : "3월"
+                },
+                {
+                    "messageText": "4월 인터페이스 일정 : " + dic["4월"],
+                    "action" : "message",
+                    "label" : "4월"
+                },
+                {
+                    "messageText": "5월 인터페이스 일정 : " + dic["5월"],
+                    "action" : "message",
+                    "label" : "5월"
+                },
+                {
+                    "messageText": "6월 인터페이스 일정 : " + dic["6월"],
+                    "action" : "message",
+                    "label" : "6월"
+                },
+                {
+                    "messageText": "7월 인터페이스 일정 : " + dic["7월"],
+                    "action" : "message",
+                    "label" : "7월"
+                },
+                {
+                    "messageText": "8월 인터페이스 일정 : " + dic["8월"],
+                    "action" : "message",
+                    "label" : "8월"
+                },
+                {
+                    "messageText": "9월 인터페이스 일정 : " + dic["9월"],
+                    "action" : "message",
+                    "label" : "9월"
+                },
+                {
+                    "messageText": "10월 인터페이스 일정 : " + dic["10월"],
+                    "action" : "message",
+                    "label" : "10월"
+                },
+                {
+                    "messageText": "11월 인터페이스 일정 : " + dic["11월"],
+                    "action" : "message",
+                    "label" : "11월"
+                },
+                {
+                    "messageText": "12월 인터페이스 일정 : " + dic["12월"],
+                    "action" : "message",
+                    "label" : "12월"
+                }
+            ]
+        }
+    }
     return jsonify(res)
 
 
