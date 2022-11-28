@@ -17,7 +17,8 @@ def hello():
 def _fee():
     
     req = request.get_json()
-
+    print(req)
+    
     userRes = req["userRequest"]["utterance"]	 				
     member_type = req["action"]["clientExtra"]["member_type"]	
     
@@ -450,58 +451,6 @@ def interface_link():
 
     return jsonify(res)
 
-
-#인터페이스 행사 소개
-@application.route("/event", methods=['POST'])
-def event():
-    req = request.get_json()
-    image=req['action']['params']['event']
-
-    print(image)
-    res={"version":"2.0",
-         "template":{"outputs":[{
-             "listCard":{
-                 "header":{
-                     "title":"인터페이스 행사"
-                 },
-                 "items":[
-                     {
-                         "title":"인프전",
-                         "description":"인터페이스 프로그래밍 전시회",
-                         "imageUrl":"https//~~~",
-                         "link":{
-                             "web":"https//~~"
-                         }
-                     },
-                     {
-                         "title": "인커톤",
-                         "description": "인터페이스 자체 해커톤",
-                         "imageUrl": "https//~~~",
-                         "link": {
-                             "web": "https//~~"
-                         }
-                     },
-                     {
-                         "title": "스터디",
-                         "description": "더 공부하고 싶은 학생을 위한 스터디!",
-                         "imageUrl": "https//~~~",
-                         "link": {
-                             "web": "https//~~"
-                         }
-                     },
-                 ],
-                 "button":[
-                     {
-                         "label":"깃허브 링크",
-                         "action":"weblink",
-                         "weblinkUrl":"https://github.com/sejonginterface"
-                     }
-                 ]
-             }
-         }
-
-         ]}}
-    return jsonify(res)
 
 
 
