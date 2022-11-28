@@ -17,8 +17,7 @@ def hello():
 def _fee():
     
     req = request.get_json()
-    print(req)
-    
+
     userRes = req["userRequest"]["utterance"]	 				
     member_type = req["action"]["clientExtra"]["member_type"]	
     
@@ -40,34 +39,13 @@ def _fee():
         m_type = "재학생"
         #str(data[1]["type"])
 
-    '''
-    if member_type == "재학생":
-        fee = 20000
-    elif member_type == "신입생":
-        fee = 20000
-    '''
-
     text = "동아리 회비 안내" + "\n" + m_type + " : " + str(club_fee) + "원"
     res = RES(text)
 
     return jsonify(res)
 
-'''
+
 # Wi-Fi 비밀번호 안내
-@application.route("/wifi",methods=['POST'])
-def wifi():
-
-    req = request.get_json()
-    
-    text = "Wi-Fi name : 어서와코딩은처음이지 (5G)\nPassword : 518interface"
-    
-    res = RES(text)
-    
-    
-    return jsonify(res)
-
-'''
-
 @application.route("/wifi",methods=['POST'])
 def _wifi():
     
@@ -84,13 +62,13 @@ def _wifi():
 
 
 
-
 # 동아리 재실 / 퇴실 여부 체크
 @application.route("/isroom",methods=['POST'])
 def isroom():
     
     req = request.get_json()
-    
+    print(req)
+
     #userRes = req["userRequest"]["utterance"]
     room_type = req["action"]["clientExtra"]["room_type"]	    
     print(room_type)
@@ -120,8 +98,6 @@ def isroom():
             ]
         }
     }
-    
-    print(res)
 
     res = RES(text)
 
@@ -154,7 +130,7 @@ def peoplenum():
 @application.route("/clubroom",methods=['POST'])
 def clubroom():
     '''
-    data = location()// 굳이 불러와야 하나..?
+    data = location()
 
     str = data[1]["type"] + " : " + data[1]["adress"] + "\n" + data[0]["type"] + " : " + data[0]["adress"]
     '''
@@ -389,7 +365,6 @@ def schedule():
 @application.route("/suggestion",methods = ['POST'])
 def suggestion():
     req = request.get_json()
-    print(req)
 
     res = {
         "version": "2.0",
