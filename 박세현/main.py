@@ -51,7 +51,7 @@ def _fee():
 
     return jsonify(res)
 
-
+'''
 # Wi-Fi 비밀번호 안내
 @application.route("/wifi",methods=['POST'])
 def wifi():
@@ -66,7 +66,7 @@ def wifi():
     return jsonify(res)
 
 '''
-//다른 와이파이 방식인데, 이것도 굳이 데베에서 불러와야하나.
+
 @application.route("/wifi",methods=['POST'])
 def _wifi():
     
@@ -81,7 +81,7 @@ def _wifi():
 
     return jsonify(res)
 
-'''
+
 
 
 # 동아리 재실 / 퇴실 여부 체크
@@ -180,9 +180,9 @@ def clubroom():
     return jsonify(res)
 
 
-'''
-#동방 비번 (주소 바꿔야함. 겹침.)
-@application.route("/clubroom",methods=['POST'])
+
+#동방 비번 
+@application.route("/password",methods=['POST'])
 def password():
 
     #학번 이름
@@ -201,7 +201,7 @@ def password():
     res = RES(str)
 
     return jsonify(res)
-'''
+
 
 # 인터페이스 소개
 @application.route("/introduction",methods = ['POST'])
@@ -437,10 +437,10 @@ def interface_link():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "인스타그램:https://www.instagram.com/interface518/"
-                                "페이스북:https://www.instagram.com/interface518/"  # 인스타
-                                "홈페이지:https://sejong-interface.github.io/"
-                                "깃허브: https://github.com/sejonginterface"
+                        "text": "인스타그램:https://www.instagram.com/interface518/"+"\n"
+                                "페이스북:https://www.instagram.com/interface518/"+"\n" # 인스타
+                                "홈페이지:https://sejong-interface.github.io/"+"\n"
+                                "깃허브: https://github.com/sejonginterface"+"\n"
                                 "메일:518interface@gmail.com"
                     }
                 }
