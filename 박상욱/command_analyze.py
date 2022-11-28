@@ -13,6 +13,7 @@ def s_list(sentence):
     s=[]
 
     for i in range(len(sentence)):
+        print(i)
         if sentence[i]==' ':
             continue
         else:
