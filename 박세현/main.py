@@ -229,6 +229,8 @@ def introduction():
 @application.route("/people", methods = ['POST'])
 def count():
     req = request.get_json()
+
+    str = generation()
     res = {
         "version": "2.0",
           "template": {
@@ -391,7 +393,7 @@ def suggestion():
     
     return jsonify(res)
 
-
+'''
 #인터페이스 집부 구성원 안내
 @application.route("/executive_member", methods=['POST'])
 def executive_member():
@@ -426,7 +428,7 @@ def interface_link():
 
     return jsonify(res)
 
-
+'''
 
 
 if __name__ == "__main__":
