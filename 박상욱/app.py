@@ -287,7 +287,7 @@ def similliar():
         text = "유사한 명령어가 없습니다"
     else :
         for cmd in result:
-            text += cmd + " "
+            text += cmd + "\n"
 
     res = {
         "version": "2.0",
