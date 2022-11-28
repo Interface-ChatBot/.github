@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Flask,request,jsonify
 from interface_db import *
+from command_check import *
 
 application = Flask(__name__)
 
@@ -158,6 +159,7 @@ def clubroom():
                 {
 		    "basicCard":  {
                         "description": "서울특별시 광진구 능동로 209 세종대학교 학생회관 518호",
+                        #"description": data[1]["type"] + " : " + data[1]["adress"],
                         "buttons": [
                             {
                                 "action": "webLink",
@@ -165,6 +167,15 @@ def clubroom():
                                 "webLinkUrl": "https://naver.me/F6mxi8mf"
                             }
                         ]
+                    '''
+                        "buttons": [
+                            {
+                                "action": "webLink",
+                                "label": data[0]["type"],
+                                "webLinkUrl": data[0]["adress"]
+                            }
+                        ]
+                    '''
                     }   
                 }
             ]
@@ -173,7 +184,7 @@ def clubroom():
     
     return jsonify(res)
 
-@application.route("/clubroom",methods=['POST'])
+@application.route("/password",methods=['POST'])
 def password():
 
     #학번 이름
@@ -247,6 +258,35 @@ def introduction():
     req = request.get_json()
     
     text="인터페이스 소개\n" + "동아리 연혁 : 1988년\n"+ "주요 활동\n1. 동아리 자체 대회/ 전시회\n2. 다양한 스터디\n3. 소모임 활동"
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": text
+                    }
+                }
+            ]
+        }
+    }
+    
+    return jsonify(res)
+
+# Similliar Check
+@application.route("/introduction",methods = ['POST'])
+def introduction():
+    req = request.get_json()
+    
+    result = command(req) # 'None' or {"ds":"sd"}
+    text = "."
+    if result == "None":
+        text = "유사항 명령어가 없습니다"
+    else :
+        sorted_dict = sorted(result.items(), key = lambda item: item[1])
+        for cmd in sorted_dict:
+            print(cmd)
+
     res = {
         "version": "2.0",
         "template": {
