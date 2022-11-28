@@ -131,20 +131,6 @@ def isroom():
 @application.route("/peoplenum",methods=['POST'])
 def peoplenum():
     
-    pnum = 1	# DB에서 값 가져오기
-    
-    text="현재 동아리방 재실 인원 : " + str(pnum)
-    
-    res = RES(text)
-        
-    return jsonify(res)
-
-
-
-#현재 동아리 인원
-@application.route("/peoplenum",methods=['POST'])
-def peoplenum():
-    
     pnum = mic_show()
     
     res = {
@@ -160,10 +146,7 @@ def peoplenum():
         }
     }
         
-    res = RES(text)
-
     return jsonify(res)
-
 
 
 # 동아리방 위치 안내
@@ -478,13 +461,22 @@ def executive_member():
 def interface_link():
     req = request.get_json()
 
-    text = {"인스타그램:https://www.instagram.com/interface518/"
-            "페이스북:https://www.instagram.com/interface518/"  # 인스타
-            "홈페이지:https://sejong-interface.github.io/"
-            "깃허브: https://github.com/sejonginterface"
-            "메일:518interface@gmail.com"}
-
-    res = RES(text)
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "인스타그램:https://www.instagram.com/interface518/"
+                                "페이스북:https://www.instagram.com/interface518/"  # 인스타
+                                "홈페이지:https://sejong-interface.github.io/"
+                                "깃허브: https://github.com/sejonginterface"
+                                "메일:518interface@gmail.com"
+                    }
+                }
+            ]
+        }
+    }
 
     return jsonify(res)
 
