@@ -75,11 +75,11 @@ def isroom():
     pnum = 0	
     text = ""
     
-    if room_type.encode('utf-8') == "재실":
+    if room_type == "재실":
         # DB 
         mic_plus()
         
-    elif room_type.encode('utf-8') == "퇴실":
+    elif room_type == "퇴실":
         # DB 
         mic_minus()
             
