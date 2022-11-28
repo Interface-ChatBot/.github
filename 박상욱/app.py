@@ -288,7 +288,7 @@ def similliar():
     else :
         sorted_dict = sorted(result.items(), key = lambda item: item[1])
         for cmd in sorted_dict:
-            text += cmd + " "
+            text = text + cmd + " "
 
     res = {
         "version": "2.0",
