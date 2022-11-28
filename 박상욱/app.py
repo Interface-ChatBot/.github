@@ -282,13 +282,13 @@ def similliar():
 
     result = command(userRes) # 'None' or {"ds":"sd"}
    
-    text = "."
+    text = ""
     if result == "None":
         text = "유사한 명령어가 없습니다"
     else :
         sorted_dict = sorted(result.items(), key = lambda item: item[1])
         for cmd in sorted_dict:
-            print(cmd)
+            text += cmd + " "
 
     res = {
         "version": "2.0",
@@ -296,7 +296,7 @@ def similliar():
             "outputs": [
                 {
                     "simpleText": {
-                        "text": text
+                        "text": "이런 명령어를 찾으시는 건가요?\n" + text
                     }
                 }
             ]
