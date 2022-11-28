@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 import pymysql
 import mysql_user_info
 
