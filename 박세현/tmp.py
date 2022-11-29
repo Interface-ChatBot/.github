@@ -244,6 +244,7 @@ def count():
     num=0
 
     for i in data:
+        print(i["generation"])
         if i["generation"]==gen_type:
             num=i["num"]
             print(num)
