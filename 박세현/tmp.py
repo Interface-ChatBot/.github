@@ -235,59 +235,19 @@ def count():
     print(userRes)
     print('\n')
     gen_type=req["action"]["clientExtra"]["generation_type"]
-    gen_type.strip("기")
     print(gen_type)
 
     data = generation()
     #기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
 
-    text = "인터페이스 " + gen_type + " : " + "명"
+    for i in data:
+        if i["generation"]==gen_type:
+            num=i["num"]
+
+    text = "인터페이스 " + gen_type + "기 : " + num + "명"
 
 
-    res = {
-        "version": "2.0",
-          "template": {
-            "outputs": [
-              {
-                "simpleText": {
-                  "text": "인원 수를 알고 싶은 기수를 선택하세요.\n(30기 ~ 35기)."
-                }
-              }
-            ],
-            "quickReplies": [
-              {
-                "messageText": "인터페이스 30기 : 20명",
-                "action": "message",
-                "label": "30기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 23명",
-                "action": "message",
-                "label": "31기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 23명",
-                "action": "message",
-                "label": "32기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 36명",
-                "action": "message",
-                "label": "33기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 15명",
-                "action": "message",
-                "label": "34기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 58명",
-                "action": "message",
-                "label": "35기"
-              }
-            ]
-        }
-    }
+    res = RES(text)
 
 
 
