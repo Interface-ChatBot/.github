@@ -229,13 +229,12 @@ def introduction():
 @application.route("/people", methods = ['POST'])
 def count():
     req = request.get_json()
-    userRes = req["userRequest"]["utterance"]	 	
-    gen_type=req["action"]["clientExtra"]["Generation_type"]
-
     print(req)
     print('\n')
+    userRes = req["userRequest"]["utterance"]	 
     print(userRes)
     print('\n')
+    gen_type=req["action"]["clientExtra"]["Generation_type"]
     print(gen_type)
 
     data = generation()
