@@ -229,62 +229,22 @@ def introduction():
 @application.route("/people", methods = ['POST'])
 def count():
     req = request.get_json()
-    userRes = req["userRequest"]["utterance"]	 	
-    gen_type=req["action"]["clientExtra"]["genration_type"]
 
-    print(req)
-    print('\n')
-    print(userRes)
-    print('\n')
-    print(gen_type)
+    userRes = req["userRequest"]["utterance"]	 
+    gen_type=req["action"]["clientExtra"]["Generation_type"]
 
     data = generation()
     #기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
+    
+    num=0
 
-    res = {
-        "version": "2.0",
-          "template": {
-            "outputs": [
-              {
-                "simpleText": {
-                  "text": "인원 수를 알고 싶은 기수를 선택하세요.\n(30기 ~ 35기)."
-                }
-              }
-            ],
-            "quickReplies": [
-              {
-                "messageText": "인터페이스 30기 : 20명",
-                "action": "message",
-                "label": "30기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 23명",
-                "action": "message",
-                "label": "31기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 23명",
-                "action": "message",
-                "label": "32기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 36명",
-                "action": "message",
-                "label": "33기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 15명",
-                "action": "message",
-                "label": "34기"
-              },
-              {
-                "messageText": "인터페이스 30기 : 58명",
-                "action": "message",
-                "label": "35기"
-              }
-            ]
-        }
-    }
+    for i in data:
+        if i["generation"]==int(gen_type):
+            num=i["num"]
+
+    text = u"인터페이스 " + gen_type + u"기 : " + str(num) + u"명"
+    res = RES(text)
+
     return jsonify(res)
 
 
