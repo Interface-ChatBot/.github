@@ -239,16 +239,15 @@ def count():
 
     data = generation()
     #기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
-
+    
+    text = u"인터페이스 " + str(gen_type) + u"기 : "
     num=0
 
     for i in data:
         if i["generation"]==gen_type:
             num=i["num"]
-
-    print(num)
-
-    text = u"인터페이스 " + str(gen_type) + u"기 : " + str(num) + u"명"
+            print(num)
+            text+= str(num) + u"명"
 
 
     res = RES(text)
