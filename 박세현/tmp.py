@@ -244,7 +244,7 @@ def count():
         if i["generation"]==gen_type:
             num=i["num"]
 
-    text = "인터페이스 " + gen_type + "기 : " + num + "명"
+    text = u"인터페이스 " + gen_type + u"기 : " + num + u"명"
 
 
     res = RES(text)
