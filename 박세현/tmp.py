@@ -230,13 +230,13 @@ def introduction():
 def count():
     req = request.get_json()
     userRes = req["userRequest"]["utterance"]	 	
-    gen_type=req["action"]["clientExtra"]["genration_type"]
+    #gen_type=req["action"]["clientExtra"]["genration_type"]
 
     print(req)
     print('\n')
     print(userRes)
     print('\n')
-    print(gen_type)
+    #print(gen_type)
 
     data = generation()
     #기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
