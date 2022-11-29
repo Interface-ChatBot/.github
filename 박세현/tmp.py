@@ -230,8 +230,8 @@ def introduction():
 def count():
     req = request.get_json()
     userRes = req["userRequest"]["utterance"]	 	
-    gen_type=req["action"]["clientExtra"]["Generation_type"].strip("기")
-
+    gen_type=req["action"]["clientExtra"]["Generation_type"]
+    gen_type.strip("\uae30")
     print(req)
     print('\n')
     print(userRes)
