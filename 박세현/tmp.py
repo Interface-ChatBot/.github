@@ -234,7 +234,8 @@ def count():
     userRes = req["userRequest"]["utterance"]	 
     print(userRes)
     print('\n')
-    gen_type=req["action"]["clientExtra"]["Generation_type"]
+    gen_type=req["action"]["clientExtra"]["generation_type"]
+    gen_type.strip("\uae30")
     print(gen_type)
 
     data = generation()
