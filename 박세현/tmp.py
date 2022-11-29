@@ -240,12 +240,12 @@ def count():
     data = generation()
     #기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
     
-    text = u"인터페이스 " + str(gen_type) + u"기 : "
+    text = u"인터페이스 " + gen_type + u"기 : "
     num=0
 
     for i in data:
         print(i["generation"])
-        if i["generation"]==gen_type:
+        if i["generation"]==int(gen_type):
             num=i["num"]
             print(num)
             text+= str(num) + u"명"
