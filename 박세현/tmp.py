@@ -229,28 +229,20 @@ def introduction():
 @application.route("/people", methods = ['POST'])
 def count():
     req = request.get_json()
-    print(req)
-    print('\n')
+
     userRes = req["userRequest"]["utterance"]	 
-    print(userRes)
-    print('\n')
     gen_type=req["action"]["clientExtra"]["Generation_type"]
-    print(gen_type)
 
     data = generation()
     #기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
     
-    text = u"인터페이스 " + gen_type + u"기 : "
     num=0
 
     for i in data:
-        print(i["generation"])
         if i["generation"]==int(gen_type):
             num=i["num"]
-            print(num)
-            text+= str(num) + u"명"
 
-
+    text = u"인터페이스 " + gen_type + u"기 : " + str(num) + u"명"
     res = RES(text)
 
     return jsonify(res)
