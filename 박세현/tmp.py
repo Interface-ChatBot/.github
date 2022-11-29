@@ -240,6 +240,8 @@ def count():
     data = generation()
     #기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
 
+    num=0
+
     for i in data:
         if i["generation"]==gen_type:
             num=i["num"]
@@ -248,8 +250,6 @@ def count():
 
 
     res = RES(text)
-
-
 
     return jsonify(res)
 
