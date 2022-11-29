@@ -229,10 +229,18 @@ def introduction():
 @application.route("/people", methods = ['POST'])
 def count():
     req = request.get_json()
+    userRes = req["userRequest"]["utterance"]	 	
+    gen_type=req["action"]["clientExtra"]["genration_type"]
 
     print(req)
+    print('\n')
+    print(userRes)
+    print('\n')
+    print(gen_type)
 
-    str = generation()
+    data = generation()
+    #기수별 인원수를 [{generation:기수, num:인원수}] 형식의 딕셔너리 리스트로 반환
+
     res = {
         "version": "2.0",
           "template": {
@@ -364,36 +372,6 @@ def schedule():
     }
     return jsonify(res)
 
-
-# Interface suggestion
-@application.route("/suggestion",methods = ['POST'])
-def suggestion():
-    req = request.get_json()
-
-    res = {
-        "version": "2.0",
-        "template": {
-            "outputs": [
-                {
-                    "basicCard":{
-                        "title" : "인터페이스 건의사항",
-                        "thumbnail":{
-                            "imageUrl":"https://~~"
-                        },
-                        "button": [
-                            {    
-                                "action": "webLink",
-                                "label" : "구글폼 링크",
-                                "webLinkUrl":"https://~~"
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
-    }
-    
-    return jsonify(res)
 
 
 @application.route("/executive_member", methods=['POST'])
