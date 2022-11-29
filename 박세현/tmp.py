@@ -244,7 +244,7 @@ def count():
 
     text = "인터페이스 " + gen_type + " : " + "명"
 
-'''
+
     res = {
         "version": "2.0",
           "template": {
@@ -290,7 +290,7 @@ def count():
         }
     }
 
-'''
+
 
     return jsonify(res)
 
