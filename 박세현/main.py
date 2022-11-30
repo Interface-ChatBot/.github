@@ -75,11 +75,11 @@ def isroom():
     pnum = 0	
     text = ""
     
-    if room_type == "재실":
+    if room_type == "재실\n":
         # DB 
         mic_plus()
         
-    elif room_type == "퇴실":
+    elif room_type == "퇴실\n":
         # DB 
         mic_minus()
             
@@ -268,7 +268,7 @@ def schedule():
     
     res = {
          "version": "2.0",
-        "template": {
+         "template": {
             "outputs": [
                 {
                     "simpleText": {
@@ -355,34 +355,34 @@ def scheduleinfo():
     
     text = ""
     
-    if userRes == "3월":
+    if userRes == "3월" or userRes == "3월\n":
         text = "3월 인터페이스 일정 : " + dic["3월"]
         print(text)
-    elif userRes == "4월":
+    elif userRes == "4월" or userRes == "4월\n":
         text = "4월 인터페이스 일정 : " + dic["4월"]
         print(text)
-    elif userRes == "5월":
+    elif userRes == "5월" or userRes == "5월\n":
         text = "5월 인터페이스 일정 : " + dic["5월"]
         print(text)
-    elif userRes == "6월":
+    elif userRes == "6월" or userRes == "6월\n":
         text = "6월 인터페이스 일정 : " + dic["6월"]
         print(text)
-    elif userRes == "7월":
+    elif userRes == "7월" or userRes == "7월\n":
         text = "7월 인터페이스 일정 : " + dic["7월"]
         print(text)
-    elif userRes == "8월":
+    elif userRes == "8월" or userRes == "8월\n":
         text = "8월 인터페이스 일정 : " + dic["8월"]
         print(text)
-    elif userRes == "9월":
+    elif userRes == "9월" or userRes == "9월\n":
         text = "9월 인터페이스 일정 : " + dic["9월"]
         print(text)
-    elif userRes == "10월":
+    elif userRes == "10월" or userRes == "10월\n":
         text = "10월 인터페이스 일정 : " + dic["10월"]
         print(text)
-    elif userRes == "11월":
+    elif userRes == "11월" or userRes == "11월\n":
         text = "11월 인터페이스 일정 : " + dic["11월"]
         print(text)
-    elif userRes == "12월":
+    elif userRes == "12월" or userRes == "12월\n":
         text = "12월 인터페이스 일정 : " + dic["12월"]
         print(text)
 
@@ -391,7 +391,7 @@ def scheduleinfo():
     
     res = {
          "version": "2.0",
-        "template": {
+         "template": {
             "outputs": [
                 {
                     "simpleText": {
