@@ -350,7 +350,9 @@ def scheduleinfo():
           }
 
     userRes = req["userRequest"]["utterance"]
-        
+
+    print(userRes)
+    
     text = ""
     
     if userRes == "3월":
@@ -383,6 +385,9 @@ def scheduleinfo():
     elif userRes == "12월":
         text = "12월 인터페이스 일정 : " + dic["12월"]
         print(text)
+
+
+    print(text)
     
     res = {
          "version": "2.0",
@@ -396,6 +401,7 @@ def scheduleinfo():
             ]
         }
     }
+    
     return jsonify(res)
 
 
