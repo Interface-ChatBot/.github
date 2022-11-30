@@ -69,17 +69,17 @@ def isroom():
     req = request.get_json()
     print(req)
 
-    #userRes = req["userRequest"]["utterance"]
-    room_type = req["action"]["detailParams"]["Room_type"]["value"]#.encode('utf-8')	    
+    userRes = req["userRequest"]["utterance"]
+    room_type = req["action"]["detailParams"]["Room_type"]["value"].encode('utf-8')	    
     print(room_type)
     pnum = 0	
     text = ""
     
-    if room_type == "재실":
+    if userRes == "재실\n":
         # DB 
         mic_plus()
         
-    elif room_type == "퇴실":
+    elif uesrRes == "퇴실\n":
         # DB 
         mic_minus()
             
