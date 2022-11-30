@@ -67,7 +67,7 @@ def _wifi():
 def isroom():
     
     req = request.get_json()
-    
+    print(req)
     #userRes = req["userRequest"]["utterance"]
     room_type = req["action"]["clientExtra"]["room_type"]	    
     print(room_type)
