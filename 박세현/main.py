@@ -67,19 +67,18 @@ def _wifi():
 def isroom():
     
     req = request.get_json()
-    print(req)
-
-    userRes = req["userRequest"]["utterance"]
-    room_type = req["action"]["Params"]["Room_type"]["value"].encode('utf-8')	    
+    
+    #userRes = req["userRequest"]["utterance"]
+    room_type = req["action"]["clientExtra"]["room_type"]	    
     print(room_type)
     pnum = 0	
     text = ""
     
-    if userRes == "재실\n":
+    if room_type.encode('utf-8') == "재실":
         # DB 
         mic_plus()
         
-    elif uesrRes == "퇴실\n":
+    elif room_type.encode('utf-8') == "퇴실":
         # DB 
         mic_minus()
             
@@ -99,7 +98,7 @@ def isroom():
         }
     }
 
-    res = RES(text)
+    #res = RES(text)
 
     return jsonify(res)
 
