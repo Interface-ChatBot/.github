@@ -70,7 +70,7 @@ def isroom():
     print(req)
 
     userRes = req["userRequest"]["utterance"]
-    room_type = req["action"]["detailParams"]["Room_type"]["value"].encode('utf-8')	    
+    room_type = req["action"]["Params"]["Room_type"]["value"].encode('utf-8')	    
     print(room_type)
     pnum = 0	
     text = ""
