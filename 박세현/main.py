@@ -75,11 +75,13 @@ def isroom():
     text = ""
     
     if room_type.encode('utf-8') == "재실":
-        # DB 
+        # DB
+        print("재실")
         mic_plus()
         
     elif room_type.encode('utf-8') == "퇴실":
-        # DB 
+        # DB
+        print("퇴실")
         mic_minus()
             
     data = mic_show()
