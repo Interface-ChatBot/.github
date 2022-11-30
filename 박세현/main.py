@@ -265,7 +265,7 @@ def schedule():
            "11월" : "창립제",
            "12월" : "프로그래밍 전시회, 2학기 종강 총회"
           }
-        
+    
     res = {
          "version": "2.0",
         "template": {
@@ -278,54 +278,110 @@ def schedule():
             ],
             "quickReplies": [
                 {
-                    "messageText": "3월 인터페이스 일정 : " + dic["3월"],
+                    "messageText": "3월",
                     "action" : "message",
                     "label" : "3월"
                 },
                 {
-                    "messageText": "4월 인터페이스 일정 : " + dic["4월"],
+                    "messageText": "4월",
                     "action" : "message",
                     "label" : "4월"
                 },
                 {
-                    "messageText": "5월 인터페이스 일정 : " + dic["5월"],
+                    "messageText": "5월",
                     "action" : "message",
                     "label" : "5월"
                 },
                 {
-                    "messageText": "6월 인터페이스 일정 : " + dic["6월"],
+                    "messageText": "6월",
                     "action" : "message",
                     "label" : "6월"
                 },
                 {
-                    "messageText": "7월 인터페이스 일정 : " + dic["7월"],
+                    "messageText": "7월",
                     "action" : "message",
                     "label" : "7월"
                 },
                 {
-                    "messageText": "8월 인터페이스 일정 : " + dic["8월"],
+                    "messageText": "8월",
                     "action" : "message",
                     "label" : "8월"
                 },
                 {
-                    "messageText": "9월 인터페이스 일정 : " + dic["9월"],
+                    "messageText": "9월",
                     "action" : "message",
                     "label" : "9월"
                 },
                 {
-                    "messageText": "10월 인터페이스 일정 : " + dic["10월"],
+                    "messageText": "10월",
                     "action" : "message",
                     "label" : "10월"
                 },
                 {
-                    "messageText": "11월 인터페이스 일정 : " + dic["11월"],
+                    "messageText": "11월",
                     "action" : "message",
                     "label" : "11월"
                 },
                 {
-                    "messageText": "12월 인터페이스 일정 : " + dic["12월"],
+                    "messageText": "12월",
                     "action" : "message",
                     "label" : "12월"
+                }
+            ]
+        }
+    }
+    return jsonify(res)
+
+# Interface activity schedule intro
+@application.route("/scheduleinfo",methods = ['POST'])
+def scheduleinfo():
+    req = request.get_json()
+    
+    dic = {"3월" : "1학기 개강총회, 신입생 환영회, 봄엠티", 
+           "4월" : "스터디, 소모임",
+           "5월" : "기엠티",
+           "6월" : "게임 대회",
+           "7월" : "1학기 종강총회",
+           "8월" : "여름엠티 or 가을 엠티",
+           "9월" : "2학기 개강총회",
+           "10월" : "기타 행사(게임 대회, 상영 행사)",
+           "11월" : "창립제",
+           "12월" : "프로그래밍 전시회, 2학기 종강 총회"
+          }
+
+    userRes = req["userRequest"]["utterance"]
+
+    text = ""
+    
+    if userRes == "3월":
+        text = "3월 인터페이스 일정 : " + dic["3월"]
+    elif userRes == "4월":
+        text = "4월 인터페이스 일정 : " + dic["4월"]
+    elif userRes == "5월":
+        text = "5월 인터페이스 일정 : " + dic["5월"]
+    elif userRes == "6월":
+        text = "6월 인터페이스 일정 : " + dic["6월"]
+    elif userRes == "7월":
+        text = "7월 인터페이스 일정 : " + dic["7월"]
+    elif userRes == "8월":
+        text = "8월 인터페이스 일정 : " + dic["8월"]
+    elif userRes == "9월":
+        text = "9월 인터페이스 일정 : " + dic["9월"]
+    elif userRes == "10월":
+        text = "10월 인터페이스 일정 : " + dic["10월"]
+    elif userRes == "11월":
+        text = "11월 인터페이스 일정 : " + dic["11월"]
+    elif userRes == "12월":
+        text = "12월 인터페이스 일정 : " + dic["12월"]
+    
+    res = {
+         "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": text
+                    }
                 }
             ]
         }
