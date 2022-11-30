@@ -350,33 +350,39 @@ def scheduleinfo():
           }
 
     userRes = req["userRequest"]["utterance"]
-
-    print(userRes)
-    if userRes == "3월":
-        print("3월")
         
     text = ""
     
     if userRes == "3월":
         text = "3월 인터페이스 일정 : " + dic["3월"]
+        print(text)
     elif userRes == "4월":
         text = "4월 인터페이스 일정 : " + dic["4월"]
+        print(text)
     elif userRes == "5월":
         text = "5월 인터페이스 일정 : " + dic["5월"]
+        print(text)
     elif userRes == "6월":
         text = "6월 인터페이스 일정 : " + dic["6월"]
+        print(text)
     elif userRes == "7월":
         text = "7월 인터페이스 일정 : " + dic["7월"]
+        print(text)
     elif userRes == "8월":
         text = "8월 인터페이스 일정 : " + dic["8월"]
+        print(text)
     elif userRes == "9월":
         text = "9월 인터페이스 일정 : " + dic["9월"]
+        print(text)
     elif userRes == "10월":
         text = "10월 인터페이스 일정 : " + dic["10월"]
+        print(text)
     elif userRes == "11월":
         text = "11월 인터페이스 일정 : " + dic["11월"]
+        print(text)
     elif userRes == "12월":
         text = "12월 인터페이스 일정 : " + dic["12월"]
+        print(text)
     
     res = {
          "version": "2.0",
