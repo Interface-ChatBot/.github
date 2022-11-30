@@ -351,6 +351,8 @@ def scheduleinfo():
 
     userRes = req["userRequest"]["utterance"]
 
+    print(userRes)
+    
     text = ""
     
     if userRes == "3월":
