@@ -70,16 +70,16 @@ def isroom():
     print(req)
 
     #userRes = req["userRequest"]["utterance"]
-    room_type = req["action"]["detailParams"]["Room_type"]["value"].encode('utf-8')	    
+    room_type = req["action"]["detailParams"]["Room_type"]["value"]#.encode('utf-8')	    
     print(room_type)
     pnum = 0	
     text = ""
     
-    if room_type == "재실\n":
+    if room_type == "재실":
         # DB 
         mic_plus()
         
-    elif room_type == "퇴실\n":
+    elif room_type == "퇴실":
         # DB 
         mic_minus()
             
