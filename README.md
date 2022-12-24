@@ -23,6 +23,20 @@
     - DB
 * __한건희__
     - 머신러닝
+
+## 인터페이스 챗봇 링크
+[세종대학교 인터페이스 챗봇](http://pf.kakao.com/_reezxj)<p>
+<img src="./qrcode/qrcode_350.png" width="300" height="300">
+
+## Using
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) 
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Flask](https://img.shields.io/badge/flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white)
+
+## 기능 예시
+<img src="./qrcode/techIntro.png">
+
 ## 구현할 기능
 1. __인터페이스 활동 일정 안내__ (구현완료)
     - 기능구현 : 박서진
@@ -50,11 +64,6 @@
     - 기능구현 : 박서진
 13. __인터페이스 동아리 방 와이파이 비밀번호 안내__ (구현완료)
     - 기능구현 : 박상욱
-    
-## Using
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) 
-![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
-![Flask](https://img.shields.io/badge/flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white)
 
 ## 프로젝트 설치 방법
 
