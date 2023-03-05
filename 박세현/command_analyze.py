@@ -39,6 +39,9 @@ def similarity(x,y):#두 문장의 명사 튜풀을 넣고 같은 지 비교하�
         if token in y:
             cnt=cnt+1
 
+    if len(x)==0:
+        return 0
+    
     return cnt/len(x)
 
 def check(sentence):
